@@ -97,7 +97,7 @@ A1：System.out.print()：用于输出内容，但不会自动换行。但System
 System.out.print("Enter first number: "); 输出提示，不换行。
 用户在同一行输入数字并按下回车，输入的数字和回车符被传递给 scanner.nextDouble()。
 回车符使光标移到了下一行，显示看起来像是输出换行了。
-所以明白了吧。。。
+所以明白了吧。。
 
 
 
