@@ -1,3 +1,7 @@
+和的计算：
+####简介：实现浮点数加法
+
+####代码部分：
 import java.util.Scanner;
 
 public class Calculator {
@@ -11,3 +15,94 @@ public class Calculator {
         System.out.println("The sum is: " + sum);
     }
 }
+####讲解
+**import java.util.Scanner;
+
+import：这是导入声明，用于引入Java库中的类或包。在这里，我们导入了java.util.Scanner，它是一个用于从输入流中获取用户输入的类。
+java.util.Scanner：这是Java中提供的一个实用类，专门用于读取用户输入，可以处理不同类型的数据，如整数、浮点数、字符串等。
+**public class Calculator {
+
+public：这是访问修饰符，表示该类可以被任何其他类访问。
+class：关键字，用于定义一个类。类是面向对象编程中的基本单位。
+Calculator：这是类的名字，表示这是一个计算器程序。在Java中，类名的首字母通常大写。
+{：表示类体的开始，类体中的所有代码都属于Calculator类。
+**public static void main(String[] args) {
+
+public：这个关键字的作用与类的public类似，表示main方法可以被外部调用。
+static：表示这是一个静态方法，属于类本身，无需创建对象就可以直接调用。
+void：方法返回类型，表示main方法不返回任何值。
+main：这是方法的名字，Java程序的入口方法。
+String[] args：main方法的参数，它是一个字符串数组，用于接收命令行参数。
+{：表示方法体的开始。
+**Scanner scanner = new Scanner(System.in);
+
+Scanner scanner：声明一个名为scanner的Scanner类对象，用来获取用户输入。
+new Scanner(System.in)：创建一个新的Scanner对象，并将其绑定到标准输入流System.in，即控制台输入。
+**System.out.print("Enter first number: ");
+
+System.out.print：这是标准输出流，print用于输出不换行的文本信息。
+"Enter first number: "：要输出的字符串，提示用户输入第一个数字。
+**double num1 = scanner.nextDouble();
+
+scanner.nextDouble()：调用scanner对象的nextDouble方法，读取用户输入的浮点数。
+double num1：声明一个双精度浮点型变量num1，并将上述输入赋值给它，用于存储用户输入的第一个数字。
+**System.out.print("Enter second number: ");
+
+和上面的System.out.print类似，提示用户输入第二个数字。
+**double num2 = scanner.nextDouble();
+
+同样的nextDouble方法，读取第二个浮点数，并存储在num2中。
+**double sum = num1 + num2;
+
+计算num1和num2的和，并将结果存储在双精度浮点型变量sum中。
+**System.out.println("The sum is: " + sum);
+
+System.out.println：输出并换行，显示计算结果。
+"The sum is: "：输出的字符串。
++ sum：将字符串与sum的值连接，输出到控制台。
+**}
+表示方法体结束。
+**}
+表示类体结束。
+
+
+####扩展
+**Scanner类：
+Scanner类是Java中最常用的输入类之一，除了nextDouble()方法，它还提供了nextInt()用于读取整数，nextLine()用于读取整行字符串。在处理用户输入时，要注意输入数据的类型和格式。
+**浮点数与整数运算：
+这里使用了double类型来处理浮点数。Java中，double是默认的浮点数类型，适合处理有小数点的数值。如果只处理整数，可以用int，并使用nextInt()来读取。
+**改进计算器功能：
+这个简单的计算器程序目前只能进行加法运算。如果要扩展，可以加入减法、乘法、除法等操作，并通过用户输入选择操作类型。这可以通过if-else或switch-case语句来实现。
+
+
+####易错点
+**输入类型不匹配：
+如果用户输入了非数字字符，程序会抛出InputMismatchException异常。例如，用户输入字母时，nextDouble()会报错。可以使用异常处理机制（如try-catch）来捕捉这种错误，并提示用户重新输入。
+**Scanner未关闭：
+在使用Scanner对象读取输入后，最好在程序结束时调用scanner.close()关闭它。否则，可能会有资源泄漏的风险，虽然在短时间运行的程序中影响不大，但在长期运行的程序中是个潜在问题。
+**小数点问题：
+在某些语言环境中，用户可能使用逗号（,）作为小数点分隔符，而不是点（.）。这种情况下，nextDouble()可能无法正确读取输入。解决办法是确保用户输入符合程序预期的格式，或者做输入格式的预处理。
+
+
+####编者自问：
+Q1：为啥有的输出语句是System.out.print（）；但是有的输出语句是System.out.println（）；呢
+A1：System.out.print()：用于输出内容，但不会自动换行。但System.out.println（）会自动换行。
+到这儿呢，好奇心重的同学估计就会将上述代码进行试验，但实验的结果很明显--好像不影响啊，无论是print还是println，它们的输出都会换行。
+因而严谨的态度，我继续为你探究原因：
+在你的代码中，尽管用了 System.out.print() 而不是 System.out.println()，输入后的光标看起来像是换行了。
+这种情况的原因与 Scanner 类处理用户输入的方式有关，而不是 print 方法的行为。你可以试试单码一个输出语句试一试嘛。
+但为什么用了 Scanner.nextDouble() 之后看起来像是换行了？ 这与用户输入的行为有关。用户输入一个数字后，会按下回车键（Enter），这个回车符实际上是在控制台上显示为换行。因此，你看到的换行并不是 print 的作用，而是用户在输入后按回车导致的。
+代码运行的实际过程如下：
+
+System.out.print("Enter first number: "); 输出提示，不换行。
+用户在同一行输入数字并按下回车，输入的数字和回车符被传递给 scanner.nextDouble()。
+回车符使光标移到了下一行，显示看起来像是输出换行了。
+所以明白了吧。。。
+
+
+
+
+
+
+
+
