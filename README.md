@@ -25,36 +25,29 @@ bash
 source ~/.bashrc  # 或 source ~/.zshrc
 3. 安装IDE
 从 Intillij 官网 下载并安装编辑器。
-4. 安装Java扩展包Forge
-[Forge官网](https://files.minecraftforge.net/net/minecraftforge/forge/)
-下载1.20.1版本
-![如图，点级下载Mdk](Pic/Pic1)
-下载好后解压缩
-强调：你点开的Mdk下载界面是广告界面，请稍等然后点右上角的skip才会下载，下载的应该是一个压缩包而不是应用
-5.在IDE中打开该项目
-打开IDE并导入项目文件，请稍等片刻，项目需要先构建
-先修改项目设置（左上角文件项目结构）
-![这里](Picimage.png)
-![设置如下](Picimage.png)
+
+
+
+
 
 
 
 #### 使用说明
+1.clone项目
+2.在IDE中打开该项目
+打开IDE并导入项目文件，请稍等片刻，项目需要先构建
+先修改项目设置（左上角文件项目结构）
+![这里](Pic/Pic2)
+![设置如下](Picimage.png)
+修改构建设置，构建为gralde构建
+![输入图片说明](Pic/image.png)
 
-1.  在VScode中，你有可能想将默认的英文语言转化成汉语，那么请按以下操作进行：
- **扩展安装**  
-点击左侧的扩展（Extensions）图标。
-在搜索栏中输入 "Chinese (Simplified) Language Pack for Visual Studio Code"。
-找到该扩展后，点击“安装”。
-安装完成后，按下 Ctrl + Shift + P 打开命令面板。
- **切换语言** 
-在命令面板中输入 "Configure Display Language"，并选择此选项。
-在列表中选择 "zh-CN"（简体中文）。
- **重启VS Code** 
-选择语言后，VS Code 会提示你重启编辑器。
-点击重启按钮，重启后VS Code的界面将切换为中文。
-2.
-3.
+3.导入项目会自动构建，时间较长，构建完后会出现gradle界面，点开运行clientRun
+![输入图片说明](Pic/Pic4.png)
+
+
+声明：本基础骨架依旧是由Kaupenjoe的mod制作教学视频提供
+
 #### 参与贡献
 
 1.  Fork 本仓库
