@@ -28,7 +28,7 @@ source ~/.bashrc  # 或 source ~/.zshrc
 4. 安装Java扩展包Forge
 [Forge官网](https://files.minecraftforge.net/net/minecraftforge/forge/)
 下载1.20.1版本
-![如图，点级下载Mdk](Picimage.png)
+![如图，点级下载Mdk](Pic1.png)
 下载好后解压缩
 强调：你点开的Mdk下载界面是广告界面，请稍等然后点右上角的skip才会下载，下载的应该是一个压缩包而不是应用
 5.在IDE中打开该项目
