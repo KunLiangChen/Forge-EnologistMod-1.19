@@ -1,16 +1,16 @@
-# JAVA-learning-practice-project
+# JAVA-practice-project
 
 #### 介绍
-中国海洋大学计算机技术与科学中外合作办学java学习中有实践性或教育性的工程或代码
+中国海洋大学计算机技术与科学中外合作办学java学习中的娱乐部分，用Java制作Minecraft模组（1.20.x版本）
+本实践项目参考Kaupenjoe的mod制作教学视频
 
 #### 软件说明
-使用Java+VScode组合，因而需要下载VScode以及部署Java开发环境
-
+使用Java语言，IDE 为Intillij，api为Forge开源库
 
 #### 软件安装及环境部署教程
 
 1. 安装JDK（Java Development Kit）
-访问 Oracle 或 OpenJDK 网站下载适合你操作系统的JDK版本（建议使用JDK 17或更高）。
+访问 Oracle 或 OpenJDK 网站下载JDK版本（JDK17）。
 按照安装程序进行安装。
 2. 配置环境变量
 **Windows** ：右键"此电脑" → "属性" → "高级系统设置" → "环境变量"。
@@ -23,32 +23,21 @@ export PATH=$JAVA_HOME/bin:$PATH
 bash
  _复制代码_ ：
 source ~/.bashrc  # 或 source ~/.zshrc
-3. 安装VS Code
-从 VS Code 官网 下载并安装编辑器。
-4. 安装Java扩展包
-打开VS Code，点击左侧的扩展（Extensions）图标，搜索并安装 "Extension Pack for Java"，该扩展包包含：
-Language Support for Java
-Debugger for Java
-Java Test Runner
-Maven for Java
-5. 创建Java项目
-打开VS Code，点击“文件” → “打开文件夹”，选择你要存放Java项目的文件夹。
-在文件夹中创建一个新文件，如 Main.java，输入以下简单代码：
-java
-复制代码
-public class Main {
-    public static void main(String[] args) {
-        System.out.println("Hello, World!");
-    }
-}
-6. 运行Java程序
-保存文件后，点击VS Code右上角的 “运行”（Run）按钮，或者按下 Ctrl + F5 来运行程序。
-程序的输出会显示在终端窗口中。
-7. 调试Java程序（可选）
-在代码行号左侧点击设置断点（Breakpoint）。
-按 F5 启动调试模式，观察变量和执行流程。
-8. 设置自动编译（可选）
-如果希望自动编译Java文件，按 Ctrl + Shift + P，搜索并选择 "Java: Clean Java Language Server Workspace"，确保项目环境正常。
+3. 安装IDE
+从 Intillij 官网 下载并安装编辑器。
+4. 安装Java扩展包Forge
+[Forge官网](https://files.minecraftforge.net/net/minecraftforge/forge/)
+下载1.20.1版本
+![如图，点级下载Mdk](Picimage.png)
+下载好后解压缩
+强调：你点开的Mdk下载界面是广告界面，请稍等然后点右上角的skip才会下载，下载的应该是一个压缩包而不是应用
+5.在IDE中打开该项目
+打开IDE并导入项目文件，请稍等片刻，项目需要先构建
+先修改项目设置（左上角文件项目结构）
+![这里](Picimage.png)
+![设置如下](Picimage.png)
+
+
 
 #### 使用说明
 
