@@ -43,8 +43,8 @@ source ~/.bashrc  # 或 source ~/.zshrc
 ![输入图片说明](Pic/image.png)
 
 3.导入项目会自动构建，时间较长，构建完后会出现gradle界面，点开运行clientRun
-![输入图片说明](Pic/Pic4.png)
-
+![输入图片说明](PicPic4.png)
+![输入图片说明](Pic/pic5.png)
 
 声明：本基础骨架依旧是由Kaupenjoe的mod制作教学视频提供
 
