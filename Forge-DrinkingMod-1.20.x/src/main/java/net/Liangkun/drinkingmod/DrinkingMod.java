@@ -1,6 +1,9 @@
 package net.Liangkun.drinkingmod;
 
 import com.mojang.logging.LogUtils;
+import net.Liangkun.drinkingmod.block.ModBlocks;
+import net.Liangkun.drinkingmod.item.ModCreativeModTabs;
+import net.Liangkun.drinkingmod.item.ModItems;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -27,7 +30,9 @@ public class DrinkingMod
     public DrinkingMod(FMLJavaModLoadingContext context)
     {
         IEventBus modEventBus = context.getModEventBus();
-
+        ModCreativeModTabs.register(modEventBus);
+        ModItems.register(modEventBus);
+        ModBlocks.register(modEventBus);
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
 
