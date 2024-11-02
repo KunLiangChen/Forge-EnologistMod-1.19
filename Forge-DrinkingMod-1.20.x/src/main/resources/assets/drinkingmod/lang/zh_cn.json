@@ -7,5 +7,7 @@
   "block.drinkingmod.deterioration_oddness_gold_ora": "凡庸金矿",
   "creativetab.material_tab": "特殊材料",
   "item.drinkingmod.deterioration_oddness_gold_raw_ora": "凡庸金",
-  "item.drinkingmod.wheat_wine": "小麦酒"
+  "item.drinkingmod.wheat_wine": "小麦酒",
+  "creativetab.drinkingwine_tab": "酒类",
+  "tooltip.drinkingmod.wheat_wine": "酒旅第一步，来杯最基础的小麦酒吧"
 }

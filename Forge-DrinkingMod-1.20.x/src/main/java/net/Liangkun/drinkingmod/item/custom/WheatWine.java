@@ -135,6 +135,7 @@ public class WheatWine extends Item {
 //    }
 
     public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltip, TooltipFlag pFlag) {
+        pTooltip.add(Component.translatable("tooltip.drinkingmod.wheat_wine"));
         PotionUtils.addPotionTooltip(pStack, pTooltip, 1.0F);
     }
 
