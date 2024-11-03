@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "drinkingmod:item/deterioration_oddness_gold_raw_ora"
+  }
+}

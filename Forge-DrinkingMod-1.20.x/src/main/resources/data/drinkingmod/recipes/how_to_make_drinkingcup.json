@@ -1,0 +1,26 @@
+{
+  "type": "crafting_shaped",
+  "category": "misc",
+
+  "key": {
+    "#": {
+      "tag": "minecraft:planks"
+    },
+    "!": {
+      "item": "minecraft:iron_ingot"
+    },
+    "%": {
+      "tag": "minecraft:slabs"
+    }
+  },
+  "pattern":[
+    "#!#",
+    "# #",
+    " % "
+  ],
+  "result": {
+    "item": "drinkingmod:drinkingcup",
+    "count": 4
+  }
+
+}

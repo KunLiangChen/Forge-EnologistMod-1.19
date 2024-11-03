@@ -1,0 +1,13 @@
+{
+  "item.drinkingmod.drinkingcup": "Drinking Cup",
+  "block.drinkingmod.drinkingbucket": "Store Wine Bucket",
+  "block.drinkingmod.jellyfishhead": "JellyFish's Head",
+  "creativetab.tutorial_tab": "Drinking Tool",
+  "item.drinkingmod.dryjellyhead": "Dry JellyFish Head",
+  "block.drinkingmod.deterioration_oddness_gold_ora": "Oddness gold Ora",
+  "creativetab.material_tab": "Special Material",
+  "item.drinkingmod.deterioration_oddness_gold_raw_ora": "Deterioration Oddness gold raw",
+  "item.drinkingmod.wheat_wine": "Wheat Wine",
+  "creativetab.drinkingwine_tab": "Wine",
+  "tooltip.drinkingmod.wheat_wine": "Your first wine here.Journey begin"
+}
