@@ -33,13 +33,14 @@ import java.util.Iterator;
 import java.util.List;
 
 public class WheatWine extends Item {
+
     public WheatWine(Properties properties) {
 		super(properties);
     }
+
     public ItemStack getDefaultInstance() {
         return PotionUtils.setPotion(super.getDefaultInstance(), Potions.WATER);
     }
-
 
     public ItemStack finishUsingItem(ItemStack pStack, Level pLevel, LivingEntity pEntityLiving) {
         Player $$3 = pEntityLiving instanceof Player ? (Player)pEntityLiving : null;
