@@ -14,7 +14,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
     }
 
     @Override
-    protected void registerStatesAndModels() {
+    public void registerStatesAndModels() {
         blockWithItem(ModBlocks.DRINKINGBUCKET);
         blockWithItem(ModBlocks.DETERIORATION_ODDNESS_GOLD_ORA);
         blockWithItem(ModBlocks.JELLYFISHIHEAD);
