@@ -29,7 +29,6 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
-
 import java.util.List;
 
 public class WheatWine extends Item {
@@ -42,7 +41,11 @@ public class WheatWine extends Item {
         return PotionUtils.setPotion(super.getDefaultInstance(), Potions.WATER);
     }
 
-    public @NotNull ItemStack finishUsingItem(@NotNull ItemStack pStack, @NotNull Level pLevel, @NotNull LivingEntity pEntityLiving) {
+    public @NotNull ItemStack finishUsingItem(
+            @NotNull ItemStack pStack,
+            @NotNull Level pLevel,
+            @NotNull LivingEntity pEntityLiving
+    ) {
         Player $$3 = pEntityLiving instanceof Player ? (Player)pEntityLiving : null;
         if ($$3 instanceof ServerPlayer) {
             CriteriaTriggers.CONSUME_ITEM.trigger((ServerPlayer)$$3, pStack);
@@ -98,17 +101,14 @@ public class WheatWine extends Item {
         BlockState $$5 = $$1.getBlockState($$2);
         if (pContext.getClickedFace() != Direction.DOWN && $$5.is(BlockTags.CONVERTABLE_TO_MUD) && PotionUtils.getPotion($$4) == Potions.WATER) {
             $$1.playSound(null, $$2, SoundEvents.GENERIC_SPLASH, SoundSource.BLOCKS, 1.0F, 1.0F);
-            if ($$3 != null) {
-                $$3.setItemInHand(pContext.getHand(), ItemUtils.createFilledResult($$4, $$3, new ItemStack(Items.GLASS_BOTTLE)));
-            }
-            if ($$3 != null) {
-                $$3.awardStat(Stats.ITEM_USED.get($$4.getItem()));
-            }
+            assert $$3 != null;
+            $$3.setItemInHand(pContext.getHand(), ItemUtils.createFilledResult($$4, $$3, new ItemStack(Items.GLASS_BOTTLE)));
+            $$3.awardStat(Stats.ITEM_USED.get($$4.getItem()));
             if (!$$1.isClientSide) {
                 ServerLevel $$6 = (ServerLevel)$$1;
 
                 for(int $$7 = 0; $$7 < 5; ++$$7) {
-                    $$6.sendParticles(ParticleTypes.SPLASH, (double)$$2.getX() + $$1.random.nextDouble(), ($$2.getY() + 1), (double)$$2.getZ() + $$1.random.nextDouble(), 1, 0.0, 0.0, 0.0, 1.0);
+                    $$6.sendParticles(ParticleTypes.SPLASH, (double)$$2.getX() + $$1.random.nextDouble(), $$2.getY() + 1, (double)$$2.getZ() + $$1.random.nextDouble(), 1, 0.0, 0.0, 0.0, 1.0);
                 }
             }
 
@@ -129,7 +129,11 @@ public class WheatWine extends Item {
         return UseAnim.DRINK;
     }
 
-    public @NotNull InteractionResultHolder<ItemStack> use(@NotNull Level pLevel, @NotNull Player pPlayer, @NotNull InteractionHand pHand) {
+    public @NotNull InteractionResultHolder<ItemStack> use(
+            @NotNull Level pLevel,
+            @NotNull Player pPlayer,
+            @NotNull InteractionHand pHand
+    ) {
         return ItemUtils.startUsingInstantly(pLevel, pPlayer, pHand);
     }
 

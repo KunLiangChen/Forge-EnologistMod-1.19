@@ -2,9 +2,7 @@ package net.Liangkun.drinkingmod.item;
 
 import net.Liangkun.drinkingmod.DrinkingMod;
 import net.Liangkun.drinkingmod.item.custom.WheatWine;
-
 import net.minecraft.world.item.Item;
-
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;

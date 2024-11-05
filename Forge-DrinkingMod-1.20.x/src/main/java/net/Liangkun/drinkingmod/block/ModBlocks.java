@@ -20,15 +20,29 @@ public class ModBlocks {
     public static final DeferredRegister<Block> BLOCKS =
             DeferredRegister.create(ForgeRegistries.BLOCKS, DrinkingMod.MOD_ID);
 
-    public static final RegistryObject<Block> DRINKINGBUCKET = registerBlock("drinkingbucket",
-            ()->new Block(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)));
+    public static final RegistryObject<Block> DRINKINGBUCKET =
+            registerBlock(
+                    "drinkingbucket",
+                    ()->new Block(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS))
+            );
 
-    public static final RegistryObject<Block> JELLYFISHIHEAD = registerBlock("jellyfishhead",
-            ()->new Block(BlockBehaviour.Properties.copy(Blocks.SLIME_BLOCK)));
+    public static final RegistryObject<Block> JELLYFISHIHEAD =
+            registerBlock(
+                    "jellyfishhead",
+                    ()->new Block(BlockBehaviour.Properties.copy(Blocks.SLIME_BLOCK))
+            );
 
-    public static final RegistryObject<Block> DETERIORATION_ODDNESS_GOLD_ORA = registerBlock("deterioration_oddness_gold_ora",
-            ()->new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.GOLD_ORE).strength(2.5f).requiresCorrectToolForDrops()
-            , UniformInt.of(5,15)));
+    public static final RegistryObject<Block> DETERIORATION_ODDNESS_GOLD_ORA =
+            registerBlock(
+                    "deterioration_oddness_gold_ora",
+                    ()->new DropExperienceBlock(
+                            BlockBehaviour
+                                    .Properties
+                                    .copy(Blocks.GOLD_ORE)
+                                    .strength(2.5f)
+                                    .requiresCorrectToolForDrops(),
+                            UniformInt.of(5,15))
+            );
 
     private  static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block){
         RegistryObject<T> toReturn = BLOCKS.register(name,block);
@@ -37,7 +51,6 @@ public class ModBlocks {
     }
 
     private static  <T extends Block> RegistryObject<Item> registerBlockItem(String name,RegistryObject<T> block){
-
         return ModItems.ITEMS.register(name,()->new BlockItem(block.get(),new Item.Properties()));
     }
 
