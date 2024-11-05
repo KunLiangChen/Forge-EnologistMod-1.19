@@ -6,7 +6,6 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.PotionItem;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
@@ -44,9 +43,7 @@ public class ModCreativeModTabs {
     public static final RegistryObject<CreativeModeTab> DRINKINGWINE_TAB = CREATIVE_MODE_TABS.register("drinkingwine_tab",
             ()->CreativeModeTab.builder().icon(()->new ItemStack(ModItems.WHEAT_WINE.get()))
                     .title(Component.translatable("creativetab.drinkingwine_tab"))
-                    .displayItems((pParameters,pOutput)->{
-                        pOutput.accept(ModItems.WHEAT_WINE.get());
-                    }).build());
+                    .displayItems((pParameters,pOutput)-> pOutput.accept(ModItems.WHEAT_WINE.get())).build());
 
 
 
