@@ -2,7 +2,7 @@
 
 #### 介绍
 中国海洋大学计算机技术与科学中外合作办学java学习中的娱乐部分，用Java制作Minecraft模组（1.20.x版本）
-本实践项目参考Kaupenjoe的mod制作教学视频[链接]
+本实践项目参考Kaupenjoe的mod制作教学视频[链接](https://www.youtube.com/watch?v=enzKJWq0vNI&list=PLKGarocXCE1H9Y21-pxjt5Pt8bW14twa-&index=12"Kaupenjoe的mod制作教学视频")。
 #### 软件说明
 使用Java语言，IDE 为Intillij，api为Forge开源库
 
