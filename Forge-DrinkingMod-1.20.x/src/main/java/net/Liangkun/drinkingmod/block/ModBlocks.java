@@ -26,7 +26,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> JELLYFISHIHEAD = registerBlock("jellyfishhead",
             ()->new Block(BlockBehaviour.Properties.copy(Blocks.SLIME_BLOCK)));
 
-    public static  final  RegistryObject<Block> DETERIORATION_ODDNESS_GOLD_ORA = registerBlock("deterioration_oddness_gold_ora",
+    public static final RegistryObject<Block> DETERIORATION_ODDNESS_GOLD_ORA = registerBlock("deterioration_oddness_gold_ora",
             ()->new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.GOLD_ORE).strength(2.5f).requiresCorrectToolForDrops()
             , UniformInt.of(5,15)));
 
