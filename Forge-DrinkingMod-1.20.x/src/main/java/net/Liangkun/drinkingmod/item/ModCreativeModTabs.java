@@ -28,6 +28,7 @@ public class ModCreativeModTabs {
 
                                         pOutput.accept(ModBlocks.DRINKINGBUCKET.get());
                                         pOutput.accept(ModBlocks.JELLYFISHIHEAD.get());
+                                        pOutput.accept(ModBlocks.CRUDE_BEGINNER_BREWER.get());
                             })
                             .build()
             );

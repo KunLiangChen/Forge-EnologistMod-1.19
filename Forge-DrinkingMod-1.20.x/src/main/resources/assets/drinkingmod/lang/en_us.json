@@ -9,5 +9,7 @@
   "item.drinkingmod.deterioration_oddness_gold_raw_ora": "Deterioration Oddness gold raw",
   "item.drinkingmod.wheat_wine": "Wheat Wine",
   "creativetab.drinkingwine_tab": "Wine",
-  "tooltip.drinkingmod.wheat_wine": "Your first wine here.Journey begin"
+  "tooltip.drinkingmod.wheat_wine": "Your first wine here.Journey begin",
+  "block.drinkingmod.crude_beginner_brewer": "Crude Beginner brewer",
+  "tooltip.drinkingmod.crude_beginner_brewer": "Use this for you first simple wine"
 }

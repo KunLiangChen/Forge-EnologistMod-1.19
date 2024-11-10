@@ -1,6 +1,7 @@
 package net.Liangkun.drinkingmod.block;
 
 import net.Liangkun.drinkingmod.DrinkingMod;
+import net.Liangkun.drinkingmod.block.custom.CrudeBeginnerBrewer;
 import net.Liangkun.drinkingmod.item.ModItems;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
@@ -30,6 +31,12 @@ public class ModBlocks {
             registerBlock(
                     "jellyfishhead",
                     ()->new Block(BlockBehaviour.Properties.copy(Blocks.SLIME_BLOCK))
+            );
+
+    public static final RegistryObject<Block> CRUDE_BEGINNER_BREWER =
+            registerBlock(
+                    "crude_beginner_brewer",
+                    ()->new CrudeBeginnerBrewer(BlockBehaviour.Properties.copy(Blocks.BARREL))
             );
 
     public static final RegistryObject<Block> DETERIORATION_ODDNESS_GOLD_ORA =

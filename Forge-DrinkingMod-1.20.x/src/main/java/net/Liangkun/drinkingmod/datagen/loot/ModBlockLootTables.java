@@ -26,6 +26,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
     protected void generate() {
         this.dropSelf(ModBlocks.DRINKINGBUCKET.get());
         this.dropSelf(ModBlocks.JELLYFISHIHEAD.get());
+        this.dropSelf(ModBlocks.CRUDE_BEGINNER_BREWER.get());
         this.add(ModBlocks.DETERIORATION_ODDNESS_GOLD_ORA.get(),
                 block -> createIronLikeOreDrop(ModBlocks.DETERIORATION_ODDNESS_GOLD_ORA.get(), ModItems.DETERIORATION_ODDNESS_GOLD_RAW_ORA.get()));
 

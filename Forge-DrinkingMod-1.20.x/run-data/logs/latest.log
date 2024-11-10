@@ -1,34 +1,29 @@
-[0511月2024 21:47:45.437] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgedatauserdev, --assetIndex, 5, --assetsDir, C:\Users\31403\.gradle\caches\forge_gradle\assets, --gameDir, ., --fml.forgeVersion, 47.3.11, --fml.mcVersion, 1.20.1, --fml.forgeGroup, net.minecraftforge, --fml.mcpVersion, 20230612.114412, --mod, drinkingmod, --all, --output, D:\mod\Forge-DrinkingMod-1.20.x\src\generated\resources, --existing, D:\mod\Forge-DrinkingMod-1.20.x\src\main\resources]
-[0511月2024 21:47:45.444] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 10.0.9+10.0.9+main.dcd20f30 starting: java version 17.0.12 by Oracle Corporation; OS Windows 11 arch amd64 version 10.0
-[0511月2024 21:47:45.527] [main/WARN] [net.minecraftforge.fml.loading.FMLConfig/CORE]: Configuration file D:\mod\Forge-DrinkingMod-1.20.x\run-data\config\fml.toml is not correct. Correcting
-[0511月2024 21:47:45.528] [main/INFO] [net.minecraftforge.fml.loading.FMLConfig/CORE]: Incorrect key [earlyWindowSkipGLVersions] was corrected from null to []
-[0511月2024 21:47:45.529] [main/INFO] [net.minecraftforge.fml.loading.FMLConfig/CORE]: Incorrect key [earlyWindowLogHelpMessage] was corrected from null to true
-[0511月2024 21:47:45.530] [main/INFO] [net.minecraftforge.fml.loading.FMLConfig/CORE]: Incorrect key [earlyWindowSquir] was corrected from null to false
-[0511月2024 21:47:45.530] [main/INFO] [net.minecraftforge.fml.loading.FMLConfig/CORE]: Incorrect key [earlyWindowShowCPU] was corrected from null to false
-[0511月2024 21:47:45.544] [main/INFO] [net.minecraftforge.fml.loading.ImmediateWindowHandler/]: ImmediateWindowProvider not loading because launch target is forgedatauserdev
-[0511月2024 21:47:45.587] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.5 Source=union:/C:/Users/31403/.gradle/caches/modules-2/files-2.1/org.spongepowered/mixin/0.8.5/9d1c0c3a304ae6697ecd477218fa61b850bf57fc/mixin-0.8.5.jar%23128!/ Service=ModLauncher Env=CLIENT
-[0511月2024 21:47:45.837] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\31403\.gradle\caches\modules-2\files-2.1\net.minecraftforge\javafmllanguage\1.20.1-47.3.11\427f703e065645e6ab0d183bfaee6253f474393d\javafmllanguage-1.20.1-47.3.11.jar is missing mods.toml file
-[0511月2024 21:47:45.840] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\31403\.gradle\caches\modules-2\files-2.1\net.minecraftforge\lowcodelanguage\1.20.1-47.3.11\f59825d2e5d797a1bb3699876861d9f5cd616ad0\lowcodelanguage-1.20.1-47.3.11.jar is missing mods.toml file
-[0511月2024 21:47:45.842] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\31403\.gradle\caches\modules-2\files-2.1\net.minecraftforge\mclanguage\1.20.1-47.3.11\6624469b892cf7349addc8c7272ba0f9c1628e3f\mclanguage-1.20.1-47.3.11.jar is missing mods.toml file
-[0511月2024 21:47:45.846] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\31403\.gradle\caches\modules-2\files-2.1\net.minecraftforge\fmlcore\1.20.1-47.3.11\19742efc9b2d4063f19579d80f99579725e034eb\fmlcore-1.20.1-47.3.11.jar is missing mods.toml file
-[0511月2024 21:47:45.929] [main/INFO] [net.minecraftforge.fml.loading.moddiscovery.JarInJarDependencyLocator/]: No dependencies to load found. Skipping!
-[0511月2024 21:47:46.842] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgedatauserdev' with arguments [--gameDir, ., --assetsDir, C:\Users\31403\.gradle\caches\forge_gradle\assets, --assetIndex, 5, --mod, drinkingmod, --all, --output, D:\mod\Forge-DrinkingMod-1.20.x\src\generated\resources, --existing, D:\mod\Forge-DrinkingMod-1.20.x\src\main\resources]
-[0511月2024 21:47:47.091] [main/INFO] [net.minecraftforge.data.loading.DatagenModLoader/]: Initializing Data Gatherer for mods [drinkingmod]
-[0511月2024 21:47:50.166] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Forge mod loading, version 47.3.11, for MC 1.20.1 with MCP 20230612.114412
-[0511月2024 21:47:50.168] [modloading-worker-0/INFO] [net.minecraftforge.common.MinecraftForge/FORGE]: MinecraftForge v47.3.11 Initialized
-[0511月2024 21:47:50.547] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/31403/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.3.11_mapped_parchment_2023.06.26-1.20.1/forge-1.20.1-47.3.11_mapped_parchment_2023.06.26-1.20.1.jar%23191!/assets/.mcassetsroot' uses unexpected schema
-[0511月2024 21:47:50.548] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/31403/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.3.11_mapped_parchment_2023.06.26-1.20.1/forge-1.20.1-47.3.11_mapped_parchment_2023.06.26-1.20.1.jar%23191!/data/.mcassetsroot' uses unexpected schema
-[0511月2024 21:47:50.655] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Recipes
-[0511月2024 21:47:50.677] [main/INFO] [net.minecraft.data.DataGenerator/]: Recipes finished after 20 ms
-[0511月2024 21:47:50.677] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Loot Tables
-[0511月2024 21:47:50.709] [main/INFO] [net.minecraft.data.DataGenerator/]: Loot Tables finished after 32 ms
-[0511月2024 21:47:50.709] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Block States: drinkingmod
-[0511月2024 21:47:50.803] [main/INFO] [net.minecraft.data.DataGenerator/]: Block States: drinkingmod finished after 93 ms
-[0511月2024 21:47:50.803] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Item Models: drinkingmod
-[0511月2024 21:47:50.807] [main/INFO] [net.minecraft.data.DataGenerator/]: Item Models: drinkingmod finished after 4 ms
-[0511月2024 21:47:50.807] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Tags for minecraft:block mod id drinkingmod
-[0511月2024 21:47:50.815] [main/INFO] [net.minecraft.data.DataGenerator/]: Tags for minecraft:block mod id drinkingmod finished after 7 ms
-[0511月2024 21:47:50.815] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Tags for minecraft:item mod id drinkingmod
-[0511月2024 21:47:50.816] [main/INFO] [net.minecraft.data.DataGenerator/]: Tags for minecraft:item mod id drinkingmod finished after 0 ms
-[0511月2024 21:47:50.816] [main/INFO] [net.minecraft.data.DataGenerator/]: All providers took: 160 ms
-[0511月2024 21:47:50.821] [main/INFO] [net.minecraft.data.HashCache/]: Caching: total files: 24, old count: 0, new count: 25, removed stale: 0, written: 24
+[1011月2024 17:14:31.335] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgedatauserdev, --assetIndex, 5, --assetsDir, C:\Users\31403\.gradle\caches\forge_gradle\assets, --gameDir, ., --fml.forgeVersion, 47.3.11, --fml.mcVersion, 1.20.1, --fml.forgeGroup, net.minecraftforge, --fml.mcpVersion, 20230612.114412, --mod, drinkingmod, --all, --output, D:\mod\Forge-DrinkingMod-1.20.x\src\generated\resources, --existing, D:\mod\Forge-DrinkingMod-1.20.x\src\main\resources]
+[1011月2024 17:14:31.354] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 10.0.9+10.0.9+main.dcd20f30 starting: java version 17.0.12 by Oracle Corporation; OS Windows 11 arch amd64 version 10.0
+[1011月2024 17:14:31.508] [main/INFO] [net.minecraftforge.fml.loading.ImmediateWindowHandler/]: ImmediateWindowProvider not loading because launch target is forgedatauserdev
+[1011月2024 17:14:31.572] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.5 Source=union:/C:/Users/31403/.gradle/caches/modules-2/files-2.1/org.spongepowered/mixin/0.8.5/9d1c0c3a304ae6697ecd477218fa61b850bf57fc/mixin-0.8.5.jar%23128!/ Service=ModLauncher Env=CLIENT
+[1011月2024 17:14:31.944] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\31403\.gradle\caches\modules-2\files-2.1\net.minecraftforge\javafmllanguage\1.20.1-47.3.11\427f703e065645e6ab0d183bfaee6253f474393d\javafmllanguage-1.20.1-47.3.11.jar is missing mods.toml file
+[1011月2024 17:14:31.948] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\31403\.gradle\caches\modules-2\files-2.1\net.minecraftforge\lowcodelanguage\1.20.1-47.3.11\f59825d2e5d797a1bb3699876861d9f5cd616ad0\lowcodelanguage-1.20.1-47.3.11.jar is missing mods.toml file
+[1011月2024 17:14:31.951] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\31403\.gradle\caches\modules-2\files-2.1\net.minecraftforge\mclanguage\1.20.1-47.3.11\6624469b892cf7349addc8c7272ba0f9c1628e3f\mclanguage-1.20.1-47.3.11.jar is missing mods.toml file
+[1011月2024 17:14:31.955] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\31403\.gradle\caches\modules-2\files-2.1\net.minecraftforge\fmlcore\1.20.1-47.3.11\19742efc9b2d4063f19579d80f99579725e034eb\fmlcore-1.20.1-47.3.11.jar is missing mods.toml file
+[1011月2024 17:14:32.037] [main/INFO] [net.minecraftforge.fml.loading.moddiscovery.JarInJarDependencyLocator/]: No dependencies to load found. Skipping!
+[1011月2024 17:14:33.239] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgedatauserdev' with arguments [--gameDir, ., --assetsDir, C:\Users\31403\.gradle\caches\forge_gradle\assets, --assetIndex, 5, --mod, drinkingmod, --all, --output, D:\mod\Forge-DrinkingMod-1.20.x\src\generated\resources, --existing, D:\mod\Forge-DrinkingMod-1.20.x\src\main\resources]
+[1011月2024 17:14:33.584] [main/INFO] [net.minecraftforge.data.loading.DatagenModLoader/]: Initializing Data Gatherer for mods [drinkingmod]
+[1011月2024 17:14:38.137] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Forge mod loading, version 47.3.11, for MC 1.20.1 with MCP 20230612.114412
+[1011月2024 17:14:38.143] [modloading-worker-0/INFO] [net.minecraftforge.common.MinecraftForge/FORGE]: MinecraftForge v47.3.11 Initialized
+[1011月2024 17:14:38.752] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/31403/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.3.11_mapped_parchment_2023.06.26-1.20.1/forge-1.20.1-47.3.11_mapped_parchment_2023.06.26-1.20.1.jar%23191!/assets/.mcassetsroot' uses unexpected schema
+[1011月2024 17:14:38.753] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/31403/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.3.11_mapped_parchment_2023.06.26-1.20.1/forge-1.20.1-47.3.11_mapped_parchment_2023.06.26-1.20.1.jar%23191!/data/.mcassetsroot' uses unexpected schema
+[1011月2024 17:14:39.015] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Recipes
+[1011月2024 17:14:39.124] [main/INFO] [net.minecraft.data.DataGenerator/]: Recipes finished after 108 ms
+[1011月2024 17:14:39.125] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Loot Tables
+[1011月2024 17:14:39.188] [main/INFO] [net.minecraft.data.DataGenerator/]: Loot Tables finished after 63 ms
+[1011月2024 17:14:39.188] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Block States: drinkingmod
+[1011月2024 17:14:39.402] [main/INFO] [net.minecraft.data.DataGenerator/]: Block States: drinkingmod finished after 212 ms
+[1011月2024 17:14:39.402] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Item Models: drinkingmod
+[1011月2024 17:14:39.421] [main/INFO] [net.minecraft.data.DataGenerator/]: Item Models: drinkingmod finished after 18 ms
+[1011月2024 17:14:39.421] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Tags for minecraft:block mod id drinkingmod
+[1011月2024 17:14:39.450] [main/INFO] [net.minecraft.data.DataGenerator/]: Tags for minecraft:block mod id drinkingmod finished after 27 ms
+[1011月2024 17:14:39.450] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Tags for minecraft:item mod id drinkingmod
+[1011月2024 17:14:39.452] [main/INFO] [net.minecraft.data.DataGenerator/]: Tags for minecraft:item mod id drinkingmod finished after 1 ms
+[1011月2024 17:14:39.452] [main/INFO] [net.minecraft.data.DataGenerator/]: All providers took: 437 ms
+[1011月2024 17:14:39.462] [main/INFO] [net.minecraft.data.HashCache/]: Caching: total files: 27, old count: 26, new count: 28, removed stale: 0, written: 1

@@ -2,8 +2,12 @@ package net.Liangkun.drinkingmod;
 
 import com.mojang.logging.LogUtils;
 import net.Liangkun.drinkingmod.block.ModBlocks;
+import net.Liangkun.drinkingmod.block.entity.ModBlockEntities;
 import net.Liangkun.drinkingmod.item.ModCreativeModTabs;
 import net.Liangkun.drinkingmod.item.ModItems;
+import net.Liangkun.drinkingmod.screen.CrudeBeginnerBrewerScreen;
+import net.Liangkun.drinkingmod.screen.ModMenuTypes;
+import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -33,6 +37,8 @@ public class DrinkingMod
         ModCreativeModTabs.register(modEventBus);
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
+        ModBlockEntities.register(modEventBus);
+        ModMenuTypes.register(modEventBus);
         // Register the commonSetup method for mod loading
         modEventBus.addListener(this::commonSetup);
 
@@ -74,7 +80,7 @@ public class DrinkingMod
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
-
+            MenuScreens.register(ModMenuTypes.CRUDE_BEGINNER_BREWER_MENU.get(), CrudeBeginnerBrewerScreen::new);
         }
     }
 }
