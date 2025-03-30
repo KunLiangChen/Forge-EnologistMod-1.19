@@ -1,3 +1,6 @@
 {
-  "item.enologistmod.alchemy_bottle": "炼金瓶"
+  "item.enologistmod.alchemy_bottle": "炼金瓶",
+  "block.enologistmod.normal_gold_ore": "浮生金矿",
+  "itemGroup.tool_tab": "基础工具",
+  "itemGroup.mineral_tab": "矿物"
 }

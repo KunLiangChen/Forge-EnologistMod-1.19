@@ -1,5 +1,6 @@
 package net.DreamBrewer.enologistmod.block;
 import net.DreamBrewer.enologistmod.EnologistMod;
+import net.DreamBrewer.enologistmod.item.ModCreativeModeTab;
 import net.DreamBrewer.enologistmod.item.ModItems;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
@@ -17,6 +18,10 @@ import java.util.function.Supplier;
 public class ModBlocks {
     public static final DeferredRegister<Block> BLOCKS =
             DeferredRegister.create(ForgeRegistries.BLOCKS, EnologistMod.MOD_ID);
+
+    public static final RegistryObject<Block> NORMAL_GOLD_ORE = registerBlock("normal_gold_ore",
+            () -> new DropExperienceBlock(BlockBehaviour.Properties.of(Material.METAL)
+                    .strength(0.6f).requiresCorrectToolForDrops(), UniformInt.of(3, 7)), ModCreativeModeTab.MINERAL_TAB);
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block, CreativeModeTab tab) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);

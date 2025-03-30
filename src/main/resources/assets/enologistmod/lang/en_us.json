@@ -1,3 +1,6 @@
 {
-  "item.enologistmod.alchemy_bottle": "Alchemy Bottle"
+  "item.enologistmod.alchemy_bottle": "Alchemy Bottle",
+  "block.enologistmod.normal_gold_ore": "Normal Gold Ore",
+  "itemGroup.tool_tab": "Zircon Tutorial Tab",
+  "itemGroup.mineral_tab": "Mineral Tab"
 }

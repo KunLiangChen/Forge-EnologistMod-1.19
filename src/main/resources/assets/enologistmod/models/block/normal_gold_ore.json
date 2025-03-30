@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "enologistmod:block/normal_gold_ore"
+  }
+}
