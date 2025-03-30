@@ -78,3 +78,7 @@
 ## 💬 社区（筹备中）
 - 官方Discord：`链接待更新`
 - 反馈提交：[GitHub Issues](https://github.com/KunLiangChen/Forge-EnologistMod-1.19/issues)  
+
+## TODO 待做事项
+1. （事项 1 ）
+2. （事项 2 ）
