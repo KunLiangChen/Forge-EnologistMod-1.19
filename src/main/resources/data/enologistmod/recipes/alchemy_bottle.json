@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " # ",
+    "!@!",
+    " ! "
+  ],
+  "key": {
+    "#": {
+      "tag": "minecraft:planks"
+    },
+    "@": {
+      "item": "minecraft:glass_pane"
+    },
+    "!": {
+      "item": "minecraft:glass"
+    }
+  },
+  "result": {
+    "item": "enologistmod:alchemy_bottle"
+  }
+}
