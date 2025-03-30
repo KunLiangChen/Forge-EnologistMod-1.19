@@ -7,10 +7,10 @@
   ],
   "key": {
     "#": {
-      "item": "tutorialmod:alchemy"
+      "item": "tutorialmod:alchemy_bottle"
     }
   },
   "result": {
-    "item": "tutorialmod:alchemy_bottle"
+    "item": "tutorialmod:alchemy_bottle_block"
   }
 }

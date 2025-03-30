@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "tutorialmod:alchemy_bottle_ore",
+    "tutorialmod:alchemy_bottle_block",
+    "tutorialmod:deepslate_alchemy_bottle_ore"
+  ]
+}
