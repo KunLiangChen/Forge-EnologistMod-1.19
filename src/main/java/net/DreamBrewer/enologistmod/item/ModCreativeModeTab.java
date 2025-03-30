@@ -7,7 +7,7 @@ public class ModCreativeModeTab {
     public static final CreativeModeTab TOOL_TAB = new CreativeModeTab("tool_tab") {
         @Override
         public ItemStack makeIcon() {
-            return new ItemStack(ModItems.ALCHEMY_BOTTLE.get());
+            return new ItemStack(ModBlocks.ALCHEMY_BOTTLE.get());
         }
     };
 

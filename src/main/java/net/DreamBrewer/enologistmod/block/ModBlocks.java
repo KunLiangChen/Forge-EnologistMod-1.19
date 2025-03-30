@@ -1,5 +1,6 @@
 package net.DreamBrewer.enologistmod.block;
 import net.DreamBrewer.enologistmod.EnologistMod;
+import net.DreamBrewer.enologistmod.block.custom.AlchemyBottle;
 import net.DreamBrewer.enologistmod.item.ModCreativeModeTab;
 import net.DreamBrewer.enologistmod.item.ModItems;
 import net.minecraft.util.valueproviders.UniformInt;
@@ -18,6 +19,10 @@ import java.util.function.Supplier;
 public class ModBlocks {
     public static final DeferredRegister<Block> BLOCKS =
             DeferredRegister.create(ForgeRegistries.BLOCKS, EnologistMod.MOD_ID);
+
+    public static final RegistryObject<Block> ALCHEMY_BOTTLE = registerBlock("alchemy_bottle",
+            () -> new AlchemyBottle(BlockBehaviour.Properties.of(Material.GLASS)
+                    .strength(0.5f).requiresCorrectToolForDrops().noOcclusion()), ModCreativeModeTab.TOOL_TAB);
 
     public static final RegistryObject<Block> NORMAL_GOLD_ORE = registerBlock("normal_gold_ore",
             () -> new DropExperienceBlock(BlockBehaviour.Properties.of(Material.METAL)

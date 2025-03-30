@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "enologistmod:block/alchemy_bottle"
+    },
+    "facing=south": {
+      "model": "enologistmod:block/alchemy_bottle",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "enologistmod:block/alchemy_bottle",
+      "y": 270
+    },
+    "facing=east": {
+      "model": "enologistmod:block/alchemy_bottle",
+      "y": 90
+    }
+  }
+}

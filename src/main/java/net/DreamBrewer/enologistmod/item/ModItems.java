@@ -10,8 +10,8 @@ public class ModItems {
     public static final DeferredRegister<Item> ITEMS =
             DeferredRegister.create(ForgeRegistries.ITEMS, EnologistMod.MOD_ID);
 
-    public static final RegistryObject<Item> ALCHEMY_BOTTLE = ITEMS.register("alchemy_bottle",
-            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.TOOL_TAB)));
+//    public static final RegistryObject<Item> ALCHEMY_BOTTLE = ITEMS.register("alchemy_bottle",
+//            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.TOOL_TAB)));
 
     public static final RegistryObject<Item> NORMAL_GOLD = ITEMS.register("normal_gold",
             () -> new Item(new Item.Properties().tab(ModCreativeModeTab.MINERAL_TAB)));
