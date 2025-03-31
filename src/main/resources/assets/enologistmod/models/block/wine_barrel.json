@@ -1,16 +1,17 @@
 {
 	"credit": "Made with Blockbench",
+	"render_type": "cutout",
 	"textures": {
-		"0": "block/texture",
-		"1": "block/桶底",
-		"2": "block/铁箍",
-		"3": "block/铁箍2",
-		"4": "block/桶侧边",
-		"5": "block/桶顶侧",
-		"6": "block/桶顶侧2",
-		"7": "block/铁箍一侧",
-		"8": "block/铁箍一侧2",
-		"particle": "block/texture"
+		"0": "enologistmod:block/barrel_texture",
+		"1": "enologistmod:block/barrel_bottom",
+		"2": "enologistmod:block/iron_hoop",
+		"3": "enologistmod:block/iron_hoop2",
+		"4": "enologistmod:block/barrel_side",
+		"5": "enologistmod:block/barrel_top_side",
+		"6": "enologistmod:block/barrel_top_side2",
+		"7": "enologistmod:block/iron_hoop_side",
+		"8": "enologistmod:block/iron_hoop_side2",
+		"particle": "enologistmod:block/barrel_texture"
 	},
 	"elements": [
 		{
