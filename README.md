@@ -55,7 +55,7 @@
 DreamBrewer
 项目策划： @Athering
 运营： @KagamineRia
-程序组： @Athering @Yilin @Ramesses N @ZhoukerKing
+程序组： @Athering @Yilin @Echo @Ramesses N @ZhoukerKing
 美工组： @Ryankreys @KagamineRia @Arvin
 机制/剧情组： @Adamn @KagamineRia @QingXuan
 
