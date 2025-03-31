@@ -50,6 +50,7 @@
 ## 💬 社区
 - B站官方：运营@KagamineRia[酿梦者_Official](https://b23.tv/ZX27e1a)
 - 反馈提交：[GitHub Issues](https://github.com/KunLiangChen/Forge-EnologistMod-1.19/issues)
+---
 
 ## 🐹 团队
 DreamBrewer
@@ -58,7 +59,9 @@ DreamBrewer
 - 程序组： @Athering @yilin @Echo @Ramesses N @ZhoukerKing
 - 美工组： @Ryankreys @KagamineRia @Arvin
 - 机制/剧情组： @Adamn @KagamineRia @QingXuan
+---
 
 ## TODO 待做事项
 1. 从第一集系统的学习一下做mod，搞清楚modId，变量名和label之间的区别，以及各个json文件如何编写<br>
 2. 沟槽的策划想要炼金瓶有重力效果且可以摔碎，试试实现这个，实现不了就把策划爆了也行
+3. 把策划爆了
