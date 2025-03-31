@@ -48,14 +48,14 @@
 ---
 
 ## 💬 社区
-- B站官方： 酿梦者_Official[运营@KagamineRia]
+- B站官方：运营@KagamineRia[酿梦者_Official](https://b23.tv/ZX27e1a)
 - 反馈提交：[GitHub Issues](https://github.com/KunLiangChen/Forge-EnologistMod-1.19/issues)
 
 ##    团队
 DreamBrewer
 - 项目策划： @Athering
 - 运营： @KagamineRia
-- 程序组： @Athering @Yilin @Echo @Ramesses N @ZhoukerKing
+- 程序组： @Athering @yilin @Echo @Ramesses N @ZhoukerKing
 - 美工组： @Ryankreys @KagamineRia @Arvin
 - 机制/剧情组： @Adamn @KagamineRia @QingXuan
 
