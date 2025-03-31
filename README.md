@@ -9,8 +9,8 @@
 ---
 
 ## 📜 世界观
-## 〇 模组释义
-「醉生梦死」形容如醉酒与梦境般混沌的生活——而这里的酒，真的能连接梦境。
+### 〇 模组释义
+「醉生梦死」形容如醉酒与梦境般混沌的生活——而这里的酒，**真的能连接梦境**。
 
 ### 一 背景故事
 > *"酒鬼为了喝酒编出的鬼故事罢了！"*  
@@ -26,26 +26,26 @@
 
 ## 🎮 核心玩法
 ### 1️⃣ 酿造系统
+---
 
-
-### 2️⃣ 酒灵类型
-
+### 2️⃣ 酒灵类型（部分）
+---
 
 ### 3️⃣ 进度挑战
-
+---
 
 ## ⬇️ 安装指南
 **版本支持**: Minecraft **1.19**（Forge）  
 **安装步骤**:
 1. 下载模组包文件 - [CurseForge](链接待填)（还没上传，敬请期待）。
 2. 分配至少 **4GB 内存**。
-
+---
 
 ## ❓ 常见问题
-
+---
 
 ## 🖼️ 媒体展示
-
+---
 
 ## 💬 社区
 - B站官方： 酿梦者_Official[运营@KagamineRia]
@@ -53,12 +53,12 @@
 
 ##    团队
 DreamBrewer
-项目策划： @Athering
-运营： @KagamineRia
-程序组： @Athering @Yilin @Echo @Ramesses N @ZhoukerKing
-美工组： @Ryankreys @KagamineRia @Arvin
-机制/剧情组： @Adamn @KagamineRia @QingXuan
+- 项目策划： @Athering
+- 运营： @KagamineRia
+- 程序组： @Athering @Yilin @Echo @Ramesses N @ZhoukerKing
+- 美工组： @Ryankreys @KagamineRia @Arvin
+- 机制/剧情组： @Adamn @KagamineRia @QingXuan
 
 ## TODO 待做事项
-1.从第一集系统的学习一下做mod，搞清楚modId，变量名和label之间的区别，以及各个json文件如何编写<br>
+1. 从第一集系统的学习一下做mod，搞清楚modId，变量名和label之间的区别，以及各个json文件如何编写<br>
 2. 沟槽的策划想要炼金瓶有重力效果且可以摔碎，试试实现这个，实现不了就把策划爆了也行
