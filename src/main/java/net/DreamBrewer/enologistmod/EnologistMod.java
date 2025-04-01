@@ -2,6 +2,7 @@ package net.DreamBrewer.enologistmod;
 
 import com.mojang.logging.LogUtils;
 import net.DreamBrewer.enologistmod.block.ModBlocks;
+import net.DreamBrewer.enologistmod.block.entity.ModBlockEntities;
 import net.DreamBrewer.enologistmod.item.ModItems;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -26,7 +27,7 @@ public class EnologistMod {
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
         modEventBus.addListener(this::commonSetup);
-
+        ModBlockEntities.register(modEventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
     }

@@ -34,9 +34,36 @@ public class WineBarrelBlockEntity extends BlockEntity implements MenuProvider {
 
     private LazyOptional<IItemHandler> lazyItemHandler = LazyOptional.empty();
 
+    protected final ContainerData data;
+    private int progress = 0;
+    private int maxProgress = 64; // TODO: changes depending on what is in it
+
 
     public WineBarrelBlockEntity(BlockPos pos, BlockState state) {
-        super(p_155228_, pos, state);
+        super(ModBlockEntities.WINE_BARREL.get(), pos, state);
+        this.data = new ContainerData() {
+            @Override
+            public int get(int index) {
+                return switch (index) {
+                    case 0 -> WineBarrelBlockEntity.this.progress;
+                    case 1 -> WineBarrelBlockEntity.this.maxProgress;
+                    default -> 0;
+                };
+            }
+
+            @Override
+            public void set(int index, int value) {
+                switch (index) {
+                    case 0 -> WineBarrelBlockEntity.this.progress = value;
+                    case 1 -> WineBarrelBlockEntity.this.maxProgress = value;
+                }
+            }
+
+            @Override
+            public int getCount() {
+                return 2;
+            }
+        };
     }
 
     @Override
@@ -70,6 +97,48 @@ public class WineBarrelBlockEntity extends BlockEntity implements MenuProvider {
         lazyItemHandler.invalidate();
     }
 
+    @Override
+    protected void saveAdditional(CompoundTag nbt) {
+        nbt.put("inventory", itemHandler.serializeNBT());
+//        nbt.putInt("gem_infusing_station.progress", this.progress); TODO: figure out what it is
+
+        super.saveAdditional(nbt);
+    }
+
+    @Override
+    public void load(CompoundTag nbt) {
+        super.load(nbt);
+        itemHandler.deserializeNBT(nbt.getCompound("inventory"));
+//        progress = nbt.getInt("gem_infusing_station.progress"); TODO: figure out what it is
+    }
+
+    public void drops() { // TODO: everything drops, water doesn't
+        SimpleContainer inventory = new SimpleContainer(itemHandler.getSlots());
+        for (int i = 0; i < itemHandler.getSlots(); i++) {
+            inventory.setItem(i, itemHandler.getStackInSlot(i));
+        }
+
+        Containers.dropContents(this.level, this.worldPosition, inventory);
+    }
+
+    public static void tick(Level level, BlockPos pos, BlockState blockState, WineBarrelBlockEntity pEntity) {
+        if(level.isClientSide()) {
+            return;
+        }
+
+        // TODO: do your own idea, no copy!!!
+        if(hasRecipe(pEntity)) {
+            pEntity.progress++;
+            setChanged(level, pos, state);
+
+            if(pEntity.progress >= pEntity.maxProgress) {
+                craftItem(pEntity);
+            }
+        } else {
+            pEntity.resetProgress();
+            setChanged(level, pos, state);
+        }
+    }
 
 
 }

@@ -1,7 +1,7 @@
 package net.DreamBrewer.enologistmod.block;
 import net.DreamBrewer.enologistmod.EnologistMod;
-import net.DreamBrewer.enologistmod.block.custom.AlchemyBottle;
-import net.DreamBrewer.enologistmod.block.custom.WineBarrel;
+import net.DreamBrewer.enologistmod.block.custom.AlchemyBottleBlock;
+import net.DreamBrewer.enologistmod.block.custom.WineBarrelBlock;
 import net.DreamBrewer.enologistmod.item.ModCreativeModeTab;
 import net.DreamBrewer.enologistmod.item.ModItems;
 import net.minecraft.util.valueproviders.UniformInt;
@@ -22,11 +22,11 @@ public class ModBlocks {
             DeferredRegister.create(ForgeRegistries.BLOCKS, EnologistMod.MOD_ID);
 
     public static final RegistryObject<Block> ALCHEMY_BOTTLE = registerBlock("alchemy_bottle",
-            () -> new AlchemyBottle(BlockBehaviour.Properties.of(Material.GLASS)
+            () -> new AlchemyBottleBlock(BlockBehaviour.Properties.of(Material.GLASS)
                     .strength(0.5f).requiresCorrectToolForDrops().noOcclusion()), ModCreativeModeTab.TOOL_TAB);
 
     public static final RegistryObject<Block> WINE_BARREL = registerBlock("wine_barrel",
-            () -> new WineBarrel(BlockBehaviour.Properties.of(Material.WOOD)
+            () -> new WineBarrelBlock(BlockBehaviour.Properties.of(Material.WOOD)
                     .strength(1.0f).requiresCorrectToolForDrops().noOcclusion()), ModCreativeModeTab.TOOL_TAB);
 
 
