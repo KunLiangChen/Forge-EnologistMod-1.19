@@ -15,6 +15,13 @@ public class ModItems {
 
     public static final RegistryObject<Item> NORMAL_GOLD = ITEMS.register("normal_gold",
             () -> new Item(new Item.Properties().tab(ModCreativeModeTab.MINERAL_TAB)));
+    //啤酒杯，made by @Echo
+    public static final RegistryObject<Item> BEER_MUG = ITEMS.register("beer_mug",
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.TOOL_TAB)));//暂时放在工具栏
+
+    //装满的啤酒杯，made by @Echo
+    public static final RegistryObject<Item> FULL_BEER_MUG = ITEMS.register("full_beer_mug",
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.TOOL_TAB)));//暂时放在工具栏
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }

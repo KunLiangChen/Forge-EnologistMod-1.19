@@ -4,5 +4,7 @@
   "item.enologistmod.normal_gold": "Normal Gold",
   "block.enologistmod.normal_gold_ore": "Normal Gold Ore",
   "itemGroup.tool_tab": "Zircon Tutorial Tab",
-  "itemGroup.mineral_tab": "Mineral Tab"
+  "itemGroup.mineral_tab": "Mineral Tab",
+  "item.enologistmod.beer_mug": "Beer Mug",
+  "item.enologistmod.full_beer_mug": "Full Beer Mug"
 }
