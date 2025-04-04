@@ -4,6 +4,9 @@ import com.mojang.logging.LogUtils;
 import net.DreamBrewer.enologistmod.block.ModBlocks;
 import net.DreamBrewer.enologistmod.block.entity.ModBlockEntities;
 import net.DreamBrewer.enologistmod.item.ModItems;
+import net.DreamBrewer.enologistmod.screen.ModMenuTypes;
+import net.DreamBrewer.enologistmod.screen.WineBarrelScreen;
+import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -28,7 +31,7 @@ public class EnologistMod {
         ModBlocks.register(modEventBus);
         modEventBus.addListener(this::commonSetup);
         ModBlockEntities.register(modEventBus);
-
+        ModMenuTypes.register(modEventBus);
         MinecraftForge.EVENT_BUS.register(this);
     }
 
@@ -43,7 +46,7 @@ public class EnologistMod {
     public static class ClientModEvents {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
-
+            MenuScreens.register(ModMenuTypes.WINE_BARREL_MENU.get(), WineBarrelScreen::new);
         }
     }
 }

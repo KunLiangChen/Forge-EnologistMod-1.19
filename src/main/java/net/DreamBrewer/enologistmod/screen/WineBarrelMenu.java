@@ -21,7 +21,7 @@ public class WineBarrelMenu extends AbstractContainerMenu {
     }
 
     public WineBarrelMenu(int id, Inventory inv, BlockEntity entity, ContainerData data) {
-        super(ModMenuTypes.GEM_INFUSING_STATION_MENU.get(), id);
+        super(ModMenuTypes.WINE_BARREL_MENU.get(), id);
         checkContainerSize(inv, 12);//这里的数字是槽位数量，槽位数量必须与方块实体的槽位数量一致
         blockEntity = (WineBarrelBlockEntity) entity;
         this.level = inv.player.level;
@@ -29,13 +29,27 @@ public class WineBarrelMenu extends AbstractContainerMenu {
 
         addPlayerInventory(inv);
         addPlayerHotbar(inv);
+        
         //插槽于此处初始化，包括其存在位置
         this.blockEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).ifPresent(handler -> {
-            this.addSlot(new SlotItemHandler(handler, 0, 12, 15));
-            this.addSlot(new SlotItemHandler(handler, 1, 86, 15));
-            this.addSlot(new SlotItemHandler(handler, 2, 86, 60));
+            // 左上角3×3网格（输入材料槽）
+            int startX = 30;
+            int startY = 17;
+            
+            // 添加3×3网格的9个槽位
+            for (int row = 0; row < 3; row++) {
+                for (int col = 0; col < 3; col++) {
+                    this.addSlot(new SlotItemHandler(handler, col + row * 3, 
+                            startX + col * 18, startY + row * 18));
+                }
+            }
+            
+            // 右侧垂直槽位（可能是过滤器或特殊材料）
+            this.addSlot(new SlotItemHandler(handler, 9, 79, 9));  // 顶部槽位
+            this.addSlot(new SlotItemHandler(handler, 10, 138, 30)); // 中间槽位
+            this.addSlot(new SlotItemHandler(handler, 11, 138, 60)); // 底部槽位
         });
-
+        
         addDataSlots(data);
     }
     public boolean isCrafting() {

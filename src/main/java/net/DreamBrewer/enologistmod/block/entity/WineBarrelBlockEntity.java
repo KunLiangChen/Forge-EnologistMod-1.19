@@ -1,6 +1,7 @@
 package net.DreamBrewer.enologistmod.block.entity;
 
 import net.DreamBrewer.enologistmod.item.ModItems;
+import net.DreamBrewer.enologistmod.screen.WineBarrelMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -79,7 +80,7 @@ public class WineBarrelBlockEntity extends BlockEntity implements MenuProvider {
 
     @Override
     public @Nullable AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {
-        return ;
+        return new WineBarrelMenu(id,inventory,this,this.data);
     }
 
     @Override
@@ -127,7 +128,7 @@ public class WineBarrelBlockEntity extends BlockEntity implements MenuProvider {
         Containers.dropContents(this.level, this.worldPosition, inventory);
     }
     //这一块是实现方块机制的核心，这个类似loop函数会一直被调用。
-    public static void tick(Level level, BlockPos pos, BlockState blockState, WineBarrelBlockEntity pEntity) {
+    public static void tick(Level level, BlockPos pos, BlockState state, WineBarrelBlockEntity pEntity) {
         if(level.isClientSide()) {
             return;
         }
