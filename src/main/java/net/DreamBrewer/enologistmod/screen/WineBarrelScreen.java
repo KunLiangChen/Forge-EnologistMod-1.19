@@ -41,7 +41,7 @@ public class WineBarrelScreen extends AbstractContainerScreen<WineBarrelMenu> {
             // 假设泡泡纹理位于材质的(176, 0)位置
             // 调整x坐标到GUI中央区域，大约在3x3网格和右侧槽位之间
             // 调整y坐标到适当的垂直位置
-            blit(pPoseStack, x + 77, y + 36, 176, 0, 16, menu.getScaledProgress());
+            blit(pPoseStack, x + 77, y + 36, 176, 0, menu.getScaledProgress(), 31);
 
             // 如果泡泡效果需要额外的渲染元素，可以在这里添加
             // 例如，可能需要渲染多个泡泡或泡泡的背景

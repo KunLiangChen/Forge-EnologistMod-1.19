@@ -33,8 +33,8 @@ public class WineBarrelMenu extends AbstractContainerMenu {
         //插槽于此处初始化，包括其存在位置
         this.blockEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).ifPresent(handler -> {
             // 左上角3×3网格（输入材料槽）
-            int startX = 30;
-            int startY = 17;
+            int startX = 19;
+            int startY = 15;
             
             // 添加3×3网格的9个槽位
             for (int row = 0; row < 3; row++) {
@@ -45,9 +45,9 @@ public class WineBarrelMenu extends AbstractContainerMenu {
             }
             
             // 右侧垂直槽位（可能是过滤器或特殊材料）
-            this.addSlot(new SlotItemHandler(handler, 9, 79, 9));  // 顶部槽位
-            this.addSlot(new SlotItemHandler(handler, 10, 138, 30)); // 中间槽位
-            this.addSlot(new SlotItemHandler(handler, 11, 138, 60)); // 底部槽位
+            this.addSlot(new SlotItemHandler(handler, 9, 80, 10));  // 顶部槽位
+            this.addSlot(new SlotItemHandler(handler, 10, 139, 31)); // 中间槽位
+            this.addSlot(new SlotItemHandler(handler, 11, 139, 61)); // 底部槽位
         });
         
         addDataSlots(data);
@@ -59,7 +59,7 @@ public class WineBarrelMenu extends AbstractContainerMenu {
     public int getScaledProgress() {
         int progress = this.data.get(0);
         int maxProgress = this.data.get(1);  // Max Progress
-        int progressArrowSize = 26; // This is the height in pixels of your arrow
+        int progressArrowSize = 31; // This is the height in pixels of your arrow
 
         return maxProgress != 0 && progress != 0 ? progress * progressArrowSize / maxProgress : 0;
     }
