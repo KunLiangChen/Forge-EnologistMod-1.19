@@ -17,7 +17,7 @@ public class WineBarrelMenu extends AbstractContainerMenu {
     private final Level level;
     private final ContainerData data;
     public WineBarrelMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
-        this(id, inv, inv.player.level.getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(2));
+        this(id, inv, inv.player.level.getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(4));
     }
 
     public WineBarrelMenu(int id, Inventory inv, BlockEntity entity, ContainerData data) {

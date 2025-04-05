@@ -13,6 +13,7 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
@@ -44,32 +45,38 @@ public class WineBarrelBlockEntity extends BlockEntity implements MenuProvider {
 
     protected final ContainerData data;
     private int progress = 0;
-    private int maxProgress = 640; // TODO: changes depending on what is in it
-
+    private int maxProgress = 64;// TODO: changes depending on what is in it
+    private int water = 0;
+    private int waterCapability = 16;
 
     public WineBarrelBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.WINE_BARREL.get(), pos, state);
         this.data = new ContainerData() {
-            @Override
+            @Override //根据索引值获取数据的值
             public int get(int index) {
                 return switch (index) {
                     case 0 -> WineBarrelBlockEntity.this.progress;
                     case 1 -> WineBarrelBlockEntity.this.maxProgress;
+                    case 2 -> WineBarrelBlockEntity.this.water;
+                    case 3 -> WineBarrelBlockEntity.this.waterCapability;
                     default -> 0;
                 };
             }
 
-            @Override
+            @Override //根据索引值设定数据的值
             public void set(int index, int value) {
                 switch (index) {
                     case 0 -> WineBarrelBlockEntity.this.progress = value;
                     case 1 -> WineBarrelBlockEntity.this.maxProgress = value;
+                    case 2 -> WineBarrelBlockEntity.this.water = value;
+                    case 3 -> WineBarrelBlockEntity.this.waterCapability = value;
+
                 }
             }
 
             @Override
             public int getCount() {
-                return 2;
+                return 4;
             }
         };
     }
@@ -135,6 +142,13 @@ public class WineBarrelBlockEntity extends BlockEntity implements MenuProvider {
         }
 
         // TODO: do your own idea, no copy!!!
+        if(pEntity.itemHandler.getStackInSlot(9).is(Items.WATER_BUCKET))
+        {
+            pEntity.water += 3;
+        }else if(pEntity.itemHandler.getStackInSlot(9).is(Items.POTION))
+        {
+            pEntity.water+=1;
+        }
         if(hasRecipe(pEntity)) {
             pEntity.progress++;
             setChanged(level, pos, state);
@@ -178,7 +192,7 @@ public class WineBarrelBlockEntity extends BlockEntity implements MenuProvider {
                     sugarToConsume -= 1;
                 }
             }
-
+            pEntity.water -= ;//消耗水
             pEntity.itemHandler.extractItem(10, 1, false);
             
             // 在槽位10放置啤酒产出
@@ -217,8 +231,8 @@ public class WineBarrelBlockEntity extends BlockEntity implements MenuProvider {
         // 判断条件：至少有4个小麦、1个糖，且至少分布在2个不同的格子中
         boolean hasRequiredIngredients = wheatCount >= 4 && sugarCount >= 1;
         boolean hasEnoughSlots = filledSlots >= 5; // 确保材料分布在不同格子
-        
-        return hasRequiredIngredients && hasEnoughSlots && 
+        boolean hasEnoughWater = entity.water >= entity.waterCapability;
+        return hasRequiredIngredients && hasEnoughSlots && hasEnoughWater&&
                canInsertAmountIntoOutputSlot(inventory) &&
                canInsertItemIntoOutputSlot(inventory, new ItemStack(ModItems.BEER_MUG.get(), 1));
     }
