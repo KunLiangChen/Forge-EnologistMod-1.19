@@ -33,7 +33,7 @@ import org.jetbrains.annotations.Nullable;
 public class WineBarrelBlockEntity extends BlockEntity implements MenuProvider {
     // 物品处理器 - 管理12个槽位的物品存储
     // 槽位说明：
-    //TODO:分配好各个槽位
+    //TODO: 分配好各个槽位
     private final ItemStackHandler itemHandler = new ItemStackHandler(12) {
         @Override
         protected void onContentsChanged(int slot) {
@@ -135,20 +135,38 @@ public class WineBarrelBlockEntity extends BlockEntity implements MenuProvider {
 
         Containers.dropContents(this.level, this.worldPosition, inventory);
     }
-    //这一块是实现方块机制的核心，这个类似loop函数会一直被调用。
+
+    /** 这一块是实现方块机制的核心，这个类似loop函数会一直被调用。
+     * <p>
+     * 酒桶的第 10 个槽（从 0 开始）-- 水槽里面有总共 16 槽。
+     * 里面如果有水桶，{@code water += 3}，水桶变成空桶。
+     * 如果有水瓶，{@code water += 1}，水瓶变成空瓶（能访问到放进去的对象最好）（找对应 ID）。
+     * 如果 {@code water} 达到最大值 {@code waterCapability} 就不再执行上述加水逻辑。
+     * <p>
+     * TODO: 做到能实现不同的配方，而不是单一一种。
+     *
+     * @param level
+     * @param pos
+     * @param state
+     * @param pEntity
+     */
     public static void tick(Level level, BlockPos pos, BlockState state, WineBarrelBlockEntity pEntity) {
-        if(level.isClientSide()) {
+        if (level.isClientSide()) {
             return;
         }
 
-        // TODO: do your own idea, no copy!!!
-        if(pEntity.itemHandler.getStackInSlot(9).is(Items.WATER_BUCKET))
-        {
-            pEntity.water += 3;
-        }else if(pEntity.itemHandler.getStackInSlot(9).is(Items.POTION))
-        {
-            pEntity.water+=1;
+        if (pEntity.water >= pEntity.waterCapability) {return;}
+
+        if (pEntity.itemHandler.getStackInSlot(9).is(Items.WATER_BUCKET)) {
+            pEntity.water += 3; // TODO: 能正确进来，但是游戏中没有更新画面
+            pEntity.itemHandler.extractItem(9, 1, false); // 把水桶干掉
+            pEntity.itemHandler.setStackInSlot(9, new ItemStack(Items.BUCKET)); // 把空弄出来
+        } else if(pEntity.itemHandler.getStackInSlot(9).is(Items.POTION)) {
+            pEntity.water += 1; // TODO: 能正确进来，但是游戏中没有更新画面
+            pEntity.itemHandler.extractItem(9,1, false);
+            pEntity.itemHandler.setStackInSlot(9, new ItemStack(Items.GLASS_BOTTLE));
         }
+
         if(hasRecipe(pEntity)) {
             pEntity.progress++;
             setChanged(level, pos, state);
@@ -165,7 +183,15 @@ public class WineBarrelBlockEntity extends BlockEntity implements MenuProvider {
     private void resetProgress() {
         this.progress = 0;
     }
-    //产出机制，根据策划的要求去实现
+
+    /** 产出机制，根据sb策划的要求去实现
+     * <p>
+     * 水槽住满之后，就抽取原料（16份小麦、16份小麦种子、16份糖）。
+     * 每消耗1份小麦、1份小麦种子、1份糖产出泡泡一次，循环16次。
+     * 也就是全部都消耗完时，酒就酿好了。
+     *
+     * @param pEntity 就是酒桶本身
+     */
     private static void craftItem(WineBarrelBlockEntity pEntity) {
         if(hasRecipe(pEntity)) {
             // 消耗4个小麦
@@ -192,7 +218,7 @@ public class WineBarrelBlockEntity extends BlockEntity implements MenuProvider {
                     sugarToConsume -= 1;
                 }
             }
-            pEntity.water -= ;//消耗水
+//            pEntity.water -= ; //消耗水
             pEntity.itemHandler.extractItem(10, 1, false);
             
             // 在槽位10放置啤酒产出
