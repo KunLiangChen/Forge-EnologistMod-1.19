@@ -36,7 +36,6 @@ public class WineBarrelScreen extends AbstractContainerScreen<WineBarrelMenu> {
     }
     //进度箭头渲染位置
     private void renderProgressArrow(PoseStack pPoseStack, int x, int y) {
-        // 修改为从下往上渲染水位
         int waterHeight = menu.getWaterProgress();
         int maxWaterHeight = 66; // 水位指示器的最大高度
         
