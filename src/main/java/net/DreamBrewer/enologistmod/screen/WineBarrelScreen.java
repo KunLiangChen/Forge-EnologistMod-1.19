@@ -36,14 +36,18 @@ public class WineBarrelScreen extends AbstractContainerScreen<WineBarrelMenu> {
     }
     //进度箭头渲染位置
     private void renderProgressArrow(PoseStack pPoseStack, int x, int y) {
-        blit( // TODO: 现在是向下渲染的，要更改成向上渲染。
+        // 修改为从下往上渲染水位
+        int waterHeight = menu.getWaterProgress();
+        int maxWaterHeight = 66; // 水位指示器的最大高度
+        
+        blit(
                 pPoseStack,
                 x + 108,
-                y + 9,
+                y + 9 + (maxWaterHeight - waterHeight), // 调整Y坐标起始位置
                 176,
-                16,
+                16 + (maxWaterHeight - waterHeight), // 调整纹理Y坐标
                 19,
-                menu.getWaterProgress()
+                waterHeight
         );
 
         if(menu.isCrafting()) {
