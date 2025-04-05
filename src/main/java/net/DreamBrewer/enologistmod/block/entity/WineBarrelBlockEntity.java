@@ -158,11 +158,11 @@ public class WineBarrelBlockEntity extends BlockEntity implements MenuProvider {
         if (pEntity.water >= pEntity.waterCapability) {return;}
 
         if (pEntity.itemHandler.getStackInSlot(9).is(Items.WATER_BUCKET)) {
-            pEntity.water += 3; // TODO: 能正确进来，但是游戏中没有更新画面
+            pEntity.water = Math.min(pEntity.water + 3, pEntity.waterCapability);
             pEntity.itemHandler.extractItem(9, 1, false); // 把水桶干掉
             pEntity.itemHandler.setStackInSlot(9, new ItemStack(Items.BUCKET)); // 把空弄出来
         } else if(pEntity.itemHandler.getStackInSlot(9).is(Items.POTION)) {
-            pEntity.water += 1; // TODO: 能正确进来，但是游戏中没有更新画面
+            pEntity.water += 1;
             pEntity.itemHandler.extractItem(9,1, false);
             pEntity.itemHandler.setStackInSlot(9, new ItemStack(Items.GLASS_BOTTLE));
         }
