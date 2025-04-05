@@ -36,13 +36,29 @@ public class WineBarrelScreen extends AbstractContainerScreen<WineBarrelMenu> {
     }
     //进度箭头渲染位置
     private void renderProgressArrow(PoseStack pPoseStack, int x, int y) {
+        blit( // TODO: 现在是向下渲染的，要更改成向上渲染。
+                pPoseStack,
+                x + 108,
+                y + 9,
+                176,
+                16,
+                19,
+                menu.getWaterProgress()
+        );
+
         if(menu.isCrafting()) {
             // 修改渲染位置和尺寸以匹配GUI中央的泡泡效果
             // 假设泡泡纹理位于材质的(176, 0)位置
             // 调整x坐标到GUI中央区域，大约在3x3网格和右侧槽位之间
             // 调整y坐标到适当的垂直位置
-            blit(pPoseStack, x + 77, y + 36, 176, 0, menu.getScaledProgress(), 31);
-
+            blit(
+                    pPoseStack,
+                    x + 77,
+                    y + 36,
+                    176,
+                    0, menu.getScaledProgress(),
+                    31
+            );
             // 如果泡泡效果需要额外的渲染元素，可以在这里添加
             // 例如，可能需要渲染多个泡泡或泡泡的背景
         }
