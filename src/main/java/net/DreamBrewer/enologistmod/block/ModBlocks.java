@@ -10,6 +10,7 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.DropExperienceBlock;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -22,11 +23,11 @@ public class ModBlocks {
             DeferredRegister.create(ForgeRegistries.BLOCKS, EnologistMod.MOD_ID);
 
     public static final RegistryObject<Block> ALCHEMY_BOTTLE = registerBlock("alchemy_bottle",
-            () -> new AlchemyBottleBlock(BlockBehaviour.Properties.of(Material.GLASS)
+            () -> new AlchemyBottleBlock(BlockBehaviour.Properties.of(Material.GLASS).sound(SoundType.GLASS)
                     .strength(0.5f).requiresCorrectToolForDrops().noOcclusion()), ModCreativeModeTab.TOOL_TAB);
 
     public static final RegistryObject<Block> WINE_BARREL = registerBlock("wine_barrel",
-            () -> new WineBarrelBlock(BlockBehaviour.Properties.of(Material.WOOD)
+            () -> new WineBarrelBlock(BlockBehaviour.Properties.of(Material.WOOD).sound(SoundType.WOOD)
                     .strength(1.0f).requiresCorrectToolForDrops().noOcclusion()), ModCreativeModeTab.TOOL_TAB);
 
 

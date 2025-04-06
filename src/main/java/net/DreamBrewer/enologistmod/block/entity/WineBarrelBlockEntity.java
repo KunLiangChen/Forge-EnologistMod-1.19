@@ -116,6 +116,7 @@ public class WineBarrelBlockEntity extends BlockEntity implements MenuProvider {
     protected void saveAdditional(CompoundTag nbt) {
         nbt.put("inventory", itemHandler.serializeNBT());
 //        nbt.putInt("gem_infusing_station.progress", this.progress); TODO: figure out what it is
+        nbt.putInt("wine_barrel.water", this.water); // 新增：保存water值
 
         super.saveAdditional(nbt);
     }
@@ -124,7 +125,10 @@ public class WineBarrelBlockEntity extends BlockEntity implements MenuProvider {
     public void load(CompoundTag nbt) {
         super.load(nbt);
         itemHandler.deserializeNBT(nbt.getCompound("inventory"));
-//        progress = nbt.getInt("gem_infusing_station.progress"); TODO: figure out what it is
+        if(nbt.contains("wine_barrel.water")) { // 新增：加载water值
+            this.water = nbt.getInt("wine_barrel.water");
+        }
+
     }
 
     public void drops() { // TODO: everything drops, water doesn't
