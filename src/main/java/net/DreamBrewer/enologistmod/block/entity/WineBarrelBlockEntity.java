@@ -111,7 +111,10 @@ public class WineBarrelBlockEntity extends BlockEntity implements MenuProvider {
         super.invalidateCaps();
         lazyItemHandler.invalidate();
     }
-
+    /*
+    此方法用于保存游戏数据，和此方块有关的数据如果玩家下线仍然需要保存（比如存在里面的物品，进度条的值等），就在这里使用put将其序列化
+    注意：键值起名不要撞车！！！
+     */
     @Override
     protected void saveAdditional(CompoundTag nbt) {
         nbt.put("inventory", itemHandler.serializeNBT());
@@ -120,7 +123,10 @@ public class WineBarrelBlockEntity extends BlockEntity implements MenuProvider {
 
         super.saveAdditional(nbt);
     }
-
+    /*
+    * 此方法与上面方法同理，实现反序列化。
+    * 所有数据会在玩家重新上线时从这里提取出去。
+    * */
     @Override
     public void load(CompoundTag nbt) {
         super.load(nbt);
