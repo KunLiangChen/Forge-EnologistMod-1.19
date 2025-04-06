@@ -27,7 +27,7 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> WINE_BARREL = registerBlock("wine_barrel",
             () -> new WineBarrelBlock(BlockBehaviour.Properties.of(Material.WOOD)
-                    .strength(1.0f).requiresCorrectToolForDrops().noOcclusion()), ModCreativeModeTab.TOOL_TAB);
+                    .strength(0.75f).requiresCorrectToolForDrops().noOcclusion()), ModCreativeModeTab.TOOL_TAB);
 
 
     public static final RegistryObject<Block> NORMAL_GOLD_ORE = registerBlock("normal_gold_ore",
