@@ -92,5 +92,4 @@ public class WineBarrelBlock extends BaseEntityBlock {
                 WineBarrelBlockEntity::tick);
     }
 
-
 }
