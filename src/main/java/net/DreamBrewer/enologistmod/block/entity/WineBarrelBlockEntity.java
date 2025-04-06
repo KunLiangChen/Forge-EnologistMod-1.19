@@ -27,9 +27,6 @@ import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
-import java.util.Map;
-
 //代码组注意：实现这种实体时注意itemHandler，tick，hasRecipe，craftItem这几个方法是主要修改点
 //其他方法大不相同，策划组没发疯就不用去想着改。
 //TODO：策划组确实发疯了（实现蓄水系统），现在要对他们发动自杀式袭击炸死他们
@@ -114,30 +111,20 @@ public class WineBarrelBlockEntity extends BlockEntity implements MenuProvider {
         super.invalidateCaps();
         lazyItemHandler.invalidate();
     }
-    /*
-    此方法用于保存游戏数据，和此方块有关的数据如果玩家下线仍然需要保存（比如存在里面的物品，进度条的值等），就在这里使用put将其序列化
-    注意：键值起名不要撞车！！！
-     */
+
     @Override
     protected void saveAdditional(CompoundTag nbt) {
         nbt.put("inventory", itemHandler.serializeNBT());
 //        nbt.putInt("gem_infusing_station.progress", this.progress); TODO: figure out what it is
-        nbt.putInt("wine_barrel.water", this.water); // 新增：保存water值
 
         super.saveAdditional(nbt);
     }
-    /*
-    * 此方法与上面方法同理，实现反序列化。
-    * 所有数据会在玩家重新上线时从这里提取出去。
-    * */
+
     @Override
     public void load(CompoundTag nbt) {
         super.load(nbt);
         itemHandler.deserializeNBT(nbt.getCompound("inventory"));
-        if(nbt.contains("wine_barrel.water")) { // 新增：加载water值
-            this.water = nbt.getInt("wine_barrel.water");
-        }
-
+//        progress = nbt.getInt("gem_infusing_station.progress"); TODO: figure out what it is
     }
 
     public void drops() { // TODO: everything drops, water doesn't
@@ -242,70 +229,38 @@ public class WineBarrelBlockEntity extends BlockEntity implements MenuProvider {
         }
     }
     //各类配方通过实现这个方法来做
-    //如果配方唯一对应返回对应id，否则返回0
-    private static int hasRecipe(WineBarrelBlockEntity entity) {
-
+    private static boolean hasRecipe(WineBarrelBlockEntity entity) {
         SimpleContainer inventory = new SimpleContainer(entity.itemHandler.getSlots());
         for (int i = 0; i < entity.itemHandler.getSlots(); i++) {
             inventory.setItem(i, entity.itemHandler.getStackInSlot(i));
         }
-
-        //总条件
-        if(canInsertAmountIntoOutputSlot(inventory) &&
-                canInsertItemIntoOutputSlot(inventory, new ItemStack(ModItems.BEER_MUG.get(), 1))) {
-            // 检查0-8插槽中小麦和糖的数量
-            int wheatCount = 0;  // 小麦计数
-            int sugarCount = 0;  // 糖计数
-            int wheatSeedsCount = 0; //小麦种子计数
-            int filledSlots = 0; // 已填充的格子数量
-
-            // 遍历0-8号槽位
-            for (int i = 0; i < 9; i++) {
-                ItemStack stack = entity.itemHandler.getStackInSlot(i);
-                if (!stack.isEmpty()) {
-                    filledSlots++; // 有物品的格子数量+1
-
-                    if (stack.is(Items.WHEAT)) {
-                        wheatCount += stack.getCount(); // 累计小麦数量
-                    } else if (stack.is(Items.SUGAR)) {
-                        sugarCount += stack.getCount(); // 累计糖数量
-                    } else if (stack.is(Items.WHEAT_SEEDS)) {
-                        wheatSeedsCount += stack.getCount(); // 累计小麦种子数量
-                    }
+        
+        // 检查0-8插槽中是否有四个小麦和一个糖
+        int wheatCount = 0;  // 小麦计数
+        int sugarCount = 0;  // 糖计数
+        int filledSlots = 0; // 已填充的格子数量
+        
+        // 遍历0-8号槽位
+        for (int i = 0; i < 9; i++) {
+            ItemStack stack = entity.itemHandler.getStackInSlot(i);
+            if (!stack.isEmpty()) {
+                filledSlots++; // 有物品的格子数量+1
+                
+                if (stack.is(Items.WHEAT)) {
+                    wheatCount += stack.getCount(); // 累计小麦数量
+                } else if (stack.is(Items.SUGAR)) {
+                    sugarCount += stack.getCount(); // 累计糖数量
                 }
             }
-            int id = 0;
-            boolean hasRequiredIngredients;
-            boolean hasEnoughSlots; // 确保材料分布在不同格子
-            boolean hasEnoughWater;
-            int countOfRecipes = 1;//配方数
-
-            for(int k=1;k<=countOfRecipes;k++){
-                if(k==1){
-                    //配方一
-                    // 判断条件：至少有1个小麦、1个糖，一个种子，且至少分布在2个不同的格子中
-                    hasRequiredIngredients = wheatCount >= 1 && sugarCount >= 1 && wheatSeedsCount >= 1;
-                    hasEnoughSlots = filledSlots == 3;
-                    hasEnoughWater = entity.water >= entity.waterCapability;
-                    if(hasRequiredIngredients && hasEnoughSlots && hasEnoughWater){
-                        id = 1;
-                    }
-                }else if(k==2){
-                    //配方二
-                    // 判断条件：。。。
-                    hasRequiredIngredients = wheatCount >= 1 && sugarCount >= 1 && wheatSeedsCount >= 1;
-                    hasEnoughSlots = filledSlots == 3;
-                    hasEnoughWater = entity.water >= entity.waterCapability;
-                    if(hasRequiredIngredients && hasEnoughSlots && hasEnoughWater) {
-                        if(id != 0)return 0;
-                        id = 2;
-                    }
-                }
-            }
-
-            return id;
         }
-        return 0;
+        
+        // 判断条件：至少有4个小麦、1个糖，且至少分布在2个不同的格子中
+        boolean hasRequiredIngredients = wheatCount >= 4 && sugarCount >= 1;
+        boolean hasEnoughSlots = filledSlots >= 5; // 确保材料分布在不同格子
+        boolean hasEnoughWater = entity.water >= entity.waterCapability;
+        return hasRequiredIngredients && hasEnoughSlots && hasEnoughWater&&
+               canInsertAmountIntoOutputSlot(inventory) &&
+               canInsertItemIntoOutputSlot(inventory, new ItemStack(ModItems.BEER_MUG.get(), 1));
     }
 
     private static boolean canInsertItemIntoOutputSlot(SimpleContainer inventory, ItemStack stack) {
