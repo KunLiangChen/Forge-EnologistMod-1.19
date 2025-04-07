@@ -17,8 +17,6 @@ public class AlchemyBottleBlock extends HorizontalDirectionalBlock {
         super(properties);
     }
 
-
-
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext pContext) {
         return this.defaultBlockState().setValue(FACING, pContext.getHorizontalDirection().getOpposite());
@@ -38,5 +36,4 @@ public class AlchemyBottleBlock extends HorizontalDirectionalBlock {
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(FACING);
     }
-
 }

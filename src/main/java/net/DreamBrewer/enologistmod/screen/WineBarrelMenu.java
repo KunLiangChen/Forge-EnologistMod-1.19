@@ -67,7 +67,7 @@ public class WineBarrelMenu extends AbstractContainerMenu {
     public int getWaterProgress() {
         int progress = this.data.get(2);
         int maxProgress = this.data.get(3);
-        int progressArrowSize = 66; // This is the height in pixels of your arrow
+        int progressArrowSize = 66;
 
         return maxProgress != 0 && progress != 0 ? progress * progressArrowSize / maxProgress : 0;
     }

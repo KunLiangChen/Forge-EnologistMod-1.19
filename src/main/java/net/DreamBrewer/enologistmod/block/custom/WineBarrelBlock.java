@@ -45,10 +45,10 @@ public class WineBarrelBlock extends BaseEntityBlock {
         builder.add(FACING);
     }
 
-    /* BLOCK ENTITY BELOW */
+    /* BLOCK_ENTITY BELOW */
 
     @Override
-    public RenderShape getRenderShape(BlockState p_49232_) {
+    public RenderShape getRenderShape(BlockState state) {
         return RenderShape.MODEL;
     }
 
