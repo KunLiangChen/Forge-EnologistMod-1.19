@@ -9,6 +9,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.Containers;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleContainer;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -243,32 +244,63 @@ public class WineBarrelBlockEntity extends BlockEntity implements MenuProvider {
             inventory.setItem(i, entity.itemHandler.getStackInSlot(i));
         }
 
-        // 检查0-8插槽中是否有四个小麦和一个糖
-        int wheatCount = 0;  // 小麦计数
-        int sugarCount = 0;  // 糖计数
-        int filledSlots = 0; // 已填充的格子数量
+        //总条件
+        if(canInsertAmountIntoOutputSlot(inventory) &&
+                canInsertItemIntoOutputSlot(inventory, new ItemStack(ModItems.BEER_MUG.get(), 1))) {
+            // 检查0-8插槽中物品的数量
+            int wheatCount = 0;  // 小麦计数
+            int sugarCount = 0;  // 糖计数
+            int wheatSeedsCount = 0; //小麦种子计数
+            int filledSlots = 0; // 已填充的格子数量
 
-        // 遍历0-8号槽位
-        for (int i = 0; i < 9; i++) {
-            ItemStack stack = entity.itemHandler.getStackInSlot(i);
-            if (!stack.isEmpty()) {
-                filledSlots++; // 有物品的格子数量+1
+            // 遍历0-8号槽位
+            for (int i = 0; i < 9; i++) {
+                ItemStack stack = entity.itemHandler.getStackInSlot(i);
+                if (!stack.isEmpty()) {
+                    filledSlots++; // 有物品的格子数量+1
 
-                if (stack.is(Items.WHEAT)) {
-                    wheatCount += stack.getCount(); // 累计小麦数量
-                } else if (stack.is(Items.SUGAR)) {
-                    sugarCount += stack.getCount(); // 累计糖数量
+                    if (stack.is(Items.WHEAT)) {
+                        wheatCount += stack.getCount(); // 累计小麦数量
+                    } else if (stack.is(Items.SUGAR)) {
+                        sugarCount += stack.getCount(); // 累计糖数量
+                    } else if (stack.is(Items.WHEAT_SEEDS)) {
+                        wheatSeedsCount += stack.getCount(); // 累计小麦种子数量
+                    }
                 }
             }
-        }
+            boolean hasRequiredIngredients;// 确保材料数量
+            boolean hasEnoughSlots; // 确保有且只有这些材料
+            boolean hasEnoughWater;// 确保水足够
+            int countOfRecipes = 1;//配方数,根据实际数量修改
 
-        // 判断条件：至少有4个小麦、1个糖，且至少分布在2个不同的格子中
-        boolean hasRequiredIngredients = wheatCount >= 4 && sugarCount >= 1;
-        boolean hasEnoughSlots = filledSlots >= 5; // 确保材料分布在不同格子
-        boolean hasEnoughWater = entity.water >= entity.waterCapability;
-        return hasRequiredIngredients && hasEnoughSlots && hasEnoughWater&&
-               canInsertAmountIntoOutputSlot(inventory) &&
-               canInsertItemIntoOutputSlot(inventory, new ItemStack(ModItems.BEER_MUG.get(), 1));
+            for(int k=1;k<=countOfRecipes;k++){
+                if(k==1){
+                    //配方一
+                    // 判断条件：至少有1个小麦、1个糖，1个种子
+                    hasRequiredIngredients = wheatCount >= 1 && sugarCount >= 1 && wheatSeedsCount >= 1;
+                    hasEnoughSlots = filledSlots == 3;
+                    hasEnoughWater = entity.water >= entity.waterCapability;
+                    if(hasRequiredIngredients && hasEnoughSlots && hasEnoughWater){
+                        entity.identicalWine = 1;
+                    }
+                }else if(k==2){
+                    //配方二
+                    // 判断条件：。。。
+                    hasRequiredIngredients = wheatCount >= 1 && sugarCount >= 1 && wheatSeedsCount >= 1;
+                    hasEnoughSlots = filledSlots == 3;
+                    hasEnoughWater = entity.water >= entity.waterCapability;
+                    if(hasRequiredIngredients && hasEnoughSlots && hasEnoughWater) {
+                        // 如果满足多个配方，则返回false
+                        if(entity.identicalWine != 0)return false;
+                        entity.identicalWine = 2;
+                    }
+                }
+            }
+            // 满足只有一个配方时，返回true
+            return true;
+        }
+        // 如果不满足总条件，则返回false
+        return false;
     }
 
     private static boolean canInsertItemIntoOutputSlot(SimpleContainer inventory, ItemStack stack) {
