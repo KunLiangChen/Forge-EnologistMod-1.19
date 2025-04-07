@@ -1,6 +1,7 @@
 package net.DreamBrewer.enologistmod.block;
 import net.DreamBrewer.enologistmod.EnologistMod;
 import net.DreamBrewer.enologistmod.block.custom.AlchemyBottleBlock;
+import net.DreamBrewer.enologistmod.block.custom.MortarVesselBlock;
 import net.DreamBrewer.enologistmod.block.custom.WineBarrelBlock;
 import net.DreamBrewer.enologistmod.item.ModCreativeModeTab;
 import net.DreamBrewer.enologistmod.item.ModItems;
@@ -29,6 +30,12 @@ public class ModBlocks {
             () -> new WineBarrelBlock(BlockBehaviour.Properties.of(Material.WOOD)
                     .strength(1.0f).noOcclusion()), ModCreativeModeTab.TOOL_TAB);
 
+    public static final RegistryObject<Block> MORTAR_VESSEL = registerBlock(
+            "mortar_vessel",
+            () -> new MortarVesselBlock(BlockBehaviour.Properties.of(Material.STONE)
+                    .strength(1.0f).noOcclusion()),
+            ModCreativeModeTab.TOOL_TAB
+    );
 
     public static final RegistryObject<Block> NORMAL_GOLD_ORE = registerBlock("normal_gold_ore",
             () -> new DropExperienceBlock(BlockBehaviour.Properties.of(Material.METAL)

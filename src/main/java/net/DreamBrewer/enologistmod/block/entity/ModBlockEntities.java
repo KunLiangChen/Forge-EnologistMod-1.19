@@ -17,6 +17,14 @@ public class ModBlockEntities {
                     BlockEntityType.Builder.of(WineBarrelBlockEntity::new,
                             ModBlocks.WINE_BARREL.get()).build(null));
 
+    public static final RegistryObject<BlockEntityType<MortarVesselBlockEntity>> MORTAR_VESSEL =
+            BLOCK_ENTITIES.register(
+                    "mortar_vessel",
+                    () -> BlockEntityType.Builder.of(
+                            MortarVesselBlockEntity::new,
+                            ModBlocks.MORTAR_VESSEL.get()
+                    ).build(null)
+            );
 
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITIES.register(eventBus);
