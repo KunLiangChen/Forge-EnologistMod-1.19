@@ -48,7 +48,9 @@ public class WineBarrelBlockEntity extends BlockEntity implements MenuProvider {
     private int maxProgress = 64;// TODO: changes depending on what is in it
     private int water = 0;
     private int waterCapability = 16;
-
+    private int wineMaking = 0;
+    private int wineFinish = 16;
+    private int identicalWine = 0;
     public WineBarrelBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.WINE_BARREL.get(), pos, state);
         this.data = new ContainerData() {
@@ -59,6 +61,9 @@ public class WineBarrelBlockEntity extends BlockEntity implements MenuProvider {
                     case 1 -> WineBarrelBlockEntity.this.maxProgress;
                     case 2 -> WineBarrelBlockEntity.this.water;
                     case 3 -> WineBarrelBlockEntity.this.waterCapability;
+                    case 4 -> WineBarrelBlockEntity.this.wineMaking;
+                    case 5 -> WineBarrelBlockEntity.this.wineFinish;
+                    case 6 -> WineBarrelBlockEntity.this.identicalWine;
                     default -> 0;
                 };
             }
@@ -70,6 +75,9 @@ public class WineBarrelBlockEntity extends BlockEntity implements MenuProvider {
                     case 1 -> WineBarrelBlockEntity.this.maxProgress = value;
                     case 2 -> WineBarrelBlockEntity.this.water = value;
                     case 3 -> WineBarrelBlockEntity.this.waterCapability = value;
+                    case 4 -> WineBarrelBlockEntity.this.wineMaking = value;
+                    case 5 -> WineBarrelBlockEntity.this.wineFinish = value;
+                    case 6 -> WineBarrelBlockEntity.this.identicalWine = value;
 
                 }
             }
@@ -198,7 +206,7 @@ public class WineBarrelBlockEntity extends BlockEntity implements MenuProvider {
             int wheatToConsume = 4;
             // 消耗1个糖
             int sugarToConsume = 1;
-            
+
             // 从0-8号槽位中消耗小麦
             for (int i = 0; i < 9 && wheatToConsume > 0; i++) {
                 ItemStack stack = pEntity.itemHandler.getStackInSlot(i);
@@ -208,7 +216,7 @@ public class WineBarrelBlockEntity extends BlockEntity implements MenuProvider {
                     wheatToConsume -= 1;
                 }
             }
-            
+
             // 从0-8号槽位中消耗糖
             for (int i = 0; i < 9 && sugarToConsume > 0; i++) {
                 ItemStack stack = pEntity.itemHandler.getStackInSlot(i);
@@ -220,11 +228,11 @@ public class WineBarrelBlockEntity extends BlockEntity implements MenuProvider {
             }
 //            pEntity.water -= ; //消耗水
             pEntity.itemHandler.extractItem(10, 1, false);
-            
+
             // 在槽位10放置啤酒产出
             pEntity.itemHandler.setStackInSlot(11, new ItemStack(ModItems.FULL_BEER_MUG.get(),
                     pEntity.itemHandler.getStackInSlot(11).getCount() +1));
-                    
+
             pEntity.resetProgress();
         }
     }
@@ -234,18 +242,18 @@ public class WineBarrelBlockEntity extends BlockEntity implements MenuProvider {
         for (int i = 0; i < entity.itemHandler.getSlots(); i++) {
             inventory.setItem(i, entity.itemHandler.getStackInSlot(i));
         }
-        
+
         // 检查0-8插槽中是否有四个小麦和一个糖
         int wheatCount = 0;  // 小麦计数
         int sugarCount = 0;  // 糖计数
         int filledSlots = 0; // 已填充的格子数量
-        
+
         // 遍历0-8号槽位
         for (int i = 0; i < 9; i++) {
             ItemStack stack = entity.itemHandler.getStackInSlot(i);
             if (!stack.isEmpty()) {
                 filledSlots++; // 有物品的格子数量+1
-                
+
                 if (stack.is(Items.WHEAT)) {
                     wheatCount += stack.getCount(); // 累计小麦数量
                 } else if (stack.is(Items.SUGAR)) {
@@ -253,7 +261,7 @@ public class WineBarrelBlockEntity extends BlockEntity implements MenuProvider {
                 }
             }
         }
-        
+
         // 判断条件：至少有4个小麦、1个糖，且至少分布在2个不同的格子中
         boolean hasRequiredIngredients = wheatCount >= 4 && sugarCount >= 1;
         boolean hasEnoughSlots = filledSlots >= 5; // 确保材料分布在不同格子

@@ -17,7 +17,7 @@ public class WineBarrelMenu extends AbstractContainerMenu {
     private final Level level;
     private final ContainerData data;
     public WineBarrelMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
-        this(id, inv, inv.player.level.getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(4));
+        this(id, inv, inv.player.level.getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(7));
     }
 
     public WineBarrelMenu(int id, Inventory inv, BlockEntity entity, ContainerData data) {
@@ -67,7 +67,7 @@ public class WineBarrelMenu extends AbstractContainerMenu {
     public int getWaterProgress() {
         int progress = this.data.get(2);
         int maxProgress = this.data.get(3);
-        int progressArrowSize = 66; // This is the height in pixels of your arrow
+        int progressArrowSize = 66;
 
         return maxProgress != 0 && progress != 0 ? progress * progressArrowSize / maxProgress : 0;
     }
