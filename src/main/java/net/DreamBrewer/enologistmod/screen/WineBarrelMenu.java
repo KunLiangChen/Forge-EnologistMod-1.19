@@ -64,6 +64,18 @@ public class WineBarrelMenu extends AbstractContainerMenu {
         return maxProgress != 0 && progress != 0 ? progress * progressArrowSize / maxProgress : 0;
     }
 
+    public int getWineProgress(){
+        int wineMaking = this.data.get(4);
+        int wineFinishing = this.data.get(5);
+        int progressArrowSize = 66;
+        return wineFinishing !=0 && wineMaking != 0 ? wineMaking*progressArrowSize/wineFinishing : 0;
+    }
+
+    public int getWineType()
+    {
+        return this.data.get(6);
+    }
+
     public int getWaterProgress() {
         int progress = this.data.get(2);
         int maxProgress = this.data.get(3);
