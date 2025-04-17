@@ -27,7 +27,7 @@ import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-
+/* 代码组注意！：以后实现实体的时候注意对于通用方法全部用static实现，需要调用方块本身就传参 */
 //代码组注意：实现这种实体时注意itemHandler，tick，hasRecipe，craftItem这几个方法是主要修改点
 //其他方法大不相同，策划组没发疯就不用去想着改。
 //TODO：策划组确实发疯了（实现蓄水系统），现在要对他们发动自杀式袭击炸死他们
@@ -181,12 +181,26 @@ public class WineBarrelBlockEntity extends BlockEntity implements MenuProvider {
             setChanged(level, pos, state);
 
             if(pEntity.progress >= pEntity.maxProgress) {
-                craftItem(pEntity);
+                brewIncrease(pEntity);
+                if(pEntity.wineMaking>=pEntity.wineFinish) {
+                    craftItem(pEntity);
+                }
             }
         } else {
             pEntity.resetProgress();
             setChanged(level, pos, state);
         }
+    }
+    /**
+     * <p>
+     * 本方法用于实现酿造进度控制，完成一次progress将会完成一格酿造进度，直到十五格完全完成
+     * 随后重置progress进度
+     * @param pEntity 是酒桶
+     * **/
+    public static void brewIncrease(WineBarrelBlockEntity pEntity)
+    {
+        pEntity.wineMaking++;
+        pEntity.resetProgress();
     }
 
     private void resetProgress() {
@@ -203,38 +217,41 @@ public class WineBarrelBlockEntity extends BlockEntity implements MenuProvider {
      */
     private static void craftItem(WineBarrelBlockEntity pEntity) {
         if(hasRecipe(pEntity)) {
+            if(pEntity.identicalWine==1){
+                    int wheatToConsume = 4;
+                    // 消耗1个糖
+                    int sugarToConsume = 1;
+
+                    // 从0-8号槽位中消耗小麦
+                    for (int i = 0; i < 9 && wheatToConsume > 0; i++) {
+                        ItemStack stack = pEntity.itemHandler.getStackInSlot(i);
+                        if (!stack.isEmpty() && stack.is(Items.WHEAT)) {
+                            // int toExtract = Math.min(stack.getCount(), wheatToConsume);
+                            pEntity.itemHandler.extractItem(i, 1, false);
+                            wheatToConsume -= 1;
+                        }
+                    }
+
+                    // 从0-8号槽位中消耗糖
+                    for (int i = 0; i < 9 && sugarToConsume > 0; i++) {
+                        ItemStack stack = pEntity.itemHandler.getStackInSlot(i);
+                        if (!stack.isEmpty() && stack.is(Items.SUGAR)) {
+                            // int toExtract = Math.min(stack.getCount(), sugarToConsume);
+                            pEntity.itemHandler.extractItem(i, 1, false);
+                            sugarToConsume -= 1;
+                        }
+                    }
+//                  pEntity.water -= ; //消耗水
+                    pEntity.itemHandler.extractItem(10, 1, false);
+
+                    // 在槽位10放置啤酒产出
+                    pEntity.itemHandler.setStackInSlot(11, new ItemStack(ModItems.FULL_BEER_MUG.get(),
+                            pEntity.itemHandler.getStackInSlot(11).getCount() +1));
+
+                    pEntity.resetProgress();
+
+            }
             // 消耗4个小麦
-            int wheatToConsume = 4;
-            // 消耗1个糖
-            int sugarToConsume = 1;
-
-            // 从0-8号槽位中消耗小麦
-            for (int i = 0; i < 9 && wheatToConsume > 0; i++) {
-                ItemStack stack = pEntity.itemHandler.getStackInSlot(i);
-                if (!stack.isEmpty() && stack.is(Items.WHEAT)) {
-                    // int toExtract = Math.min(stack.getCount(), wheatToConsume);
-                    pEntity.itemHandler.extractItem(i, 1, false);
-                    wheatToConsume -= 1;
-                }
-            }
-
-            // 从0-8号槽位中消耗糖
-            for (int i = 0; i < 9 && sugarToConsume > 0; i++) {
-                ItemStack stack = pEntity.itemHandler.getStackInSlot(i);
-                if (!stack.isEmpty() && stack.is(Items.SUGAR)) {
-                    // int toExtract = Math.min(stack.getCount(), sugarToConsume);
-                    pEntity.itemHandler.extractItem(i, 1, false);
-                    sugarToConsume -= 1;
-                }
-            }
-//            pEntity.water -= ; //消耗水
-            pEntity.itemHandler.extractItem(10, 1, false);
-
-            // 在槽位10放置啤酒产出
-            pEntity.itemHandler.setStackInSlot(11, new ItemStack(ModItems.FULL_BEER_MUG.get(),
-                    pEntity.itemHandler.getStackInSlot(11).getCount() +1));
-
-            pEntity.resetProgress();
         }
     }
     //各类配方通过实现这个方法来做
@@ -271,7 +288,7 @@ public class WineBarrelBlockEntity extends BlockEntity implements MenuProvider {
             boolean hasRequiredIngredients;// 确保材料数量
             boolean hasEnoughSlots; // 确保有且只有这些材料
             boolean hasEnoughWater;// 确保水足够
-            int countOfRecipes = 1;//配方数,根据实际数量修改
+            int countOfRecipes = 2;//配方数,根据实际数量修改
 
             for(int k=1;k<=countOfRecipes;k++){
                 if(k==1){

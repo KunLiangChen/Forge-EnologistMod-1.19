@@ -65,6 +65,21 @@ public class WineBarrelScreen extends AbstractContainerScreen<WineBarrelMenu> {
             // 如果泡泡效果需要额外的渲染元素，可以在这里添加
             // 例如，可能需要渲染多个泡泡或泡泡的背景
         }
+        if(menu.isBrewing())
+        {
+            if(menu.getWineType()==1)
+            {
+                //TODO:调整渲染
+                blit(
+                        pPoseStack,
+                        x + 77,
+                        y + 36,
+                        176,
+                        0, menu.getScaledProgress(),
+                        31
+                );
+            }
+        }
     }
 
     @Override//基础方法，不用动
