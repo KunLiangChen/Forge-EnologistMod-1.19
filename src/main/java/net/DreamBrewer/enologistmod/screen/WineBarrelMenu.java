@@ -58,14 +58,13 @@ public class WineBarrelMenu extends AbstractContainerMenu {
 
     public boolean isBrewing()
     {
-        return data.get(4)>0;
+        return data.get(4) > 0;
     }
 
     public int getScaledProgress() {
         int progress = this.data.get(0);
         int maxProgress = this.data.get(1);
         int progressArrowSize = 31; // This is the height in pixels of your arrow
-
         return maxProgress != 0 && progress != 0 ? progress * progressArrowSize / maxProgress : 0;
     }
 
@@ -85,7 +84,6 @@ public class WineBarrelMenu extends AbstractContainerMenu {
         int progress = this.data.get(2);
         int maxProgress = this.data.get(3);
         int progressArrowSize = 66;
-
         return maxProgress != 0 && progress != 0 ? progress * progressArrowSize / maxProgress : 0;
     }
 

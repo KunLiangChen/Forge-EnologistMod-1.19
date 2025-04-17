@@ -37,8 +37,10 @@ public class WineBarrelScreen extends AbstractContainerScreen<WineBarrelMenu> {
     //进度箭头渲染位置
     private void renderProgressArrow(PoseStack pPoseStack, int x, int y) {
         int waterHeight = menu.getWaterProgress();
+        int wineHeight = menu.getWineProgress();
         int maxWaterHeight = 66; // 水位指示器的最大高度
-        
+        int maxWineHeight = 66;
+
         blit(
                 pPoseStack,
                 x + 108,
@@ -48,7 +50,6 @@ public class WineBarrelScreen extends AbstractContainerScreen<WineBarrelMenu> {
                 19,
                 waterHeight
         );
-
         if(menu.isCrafting()) {
             // 修改渲染位置和尺寸以匹配GUI中央的泡泡效果
             // 假设泡泡纹理位于材质的(176, 0)位置
@@ -59,25 +60,45 @@ public class WineBarrelScreen extends AbstractContainerScreen<WineBarrelMenu> {
                     x + 77,
                     y + 36,
                     176,
-                    0, menu.getScaledProgress(),
-                    31
+                    0,
+                    menu.getScaledProgress(),
+                    9
             );
             // 如果泡泡效果需要额外的渲染元素，可以在这里添加
             // 例如，可能需要渲染多个泡泡或泡泡的背景
         }
         if(menu.isBrewing())
         {
-            if(menu.getWineType()==1)
-            {
-                //TODO:调整渲染
-                blit(
-                        pPoseStack,
-                        x + 77,
-                        y + 36,
-                        176,
-                        0, menu.getScaledProgress(),
-                        31
-                );
+            //TODO:调整渲染
+            int wineType = menu.getWineType();
+            switch (wineType) {
+                case 1:
+                    // 渲染配方1的酿造进度条
+                    blit(
+                            pPoseStack,
+                            x + 108,
+                            y + 9 + (maxWineHeight - wineHeight), // 调整Y坐标起始位置
+                            195,
+                            16 + (maxWineHeight - wineHeight), // 调整纹理Y坐标
+                            19,
+                            wineHeight
+                    );
+                    break;
+                case 2:
+                    // 渲染配方2的酿造进度条
+                    blit(
+                            pPoseStack,
+                            x + 108,
+                            y + 9 + (maxWineHeight - wineHeight), // 调整Y坐标起始位置
+                            200,
+                            16 + (maxWineHeight - wineHeight), // 调整纹理Y坐标
+                            19,
+                            wineHeight
+                    );
+                    break;
+                    // 可以根据需要添加更多的酿造类型
+                default:
+                    break;
             }
         }
     }

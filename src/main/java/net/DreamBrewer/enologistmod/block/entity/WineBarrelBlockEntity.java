@@ -52,6 +52,7 @@ public class WineBarrelBlockEntity extends BlockEntity implements MenuProvider {
     private int wineMaking = 0;
     private int wineFinish = 16;
     private int identicalWine = 0;
+    private int flag=0;//标志酒是否酿好
     public WineBarrelBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.WINE_BARREL.get(), pos, state);
         this.data = new ContainerData() {
@@ -79,13 +80,12 @@ public class WineBarrelBlockEntity extends BlockEntity implements MenuProvider {
                     case 4 -> WineBarrelBlockEntity.this.wineMaking = value;
                     case 5 -> WineBarrelBlockEntity.this.wineFinish = value;
                     case 6 -> WineBarrelBlockEntity.this.identicalWine = value;
-
                 }
             }
 
             @Override
             public int getCount() {
-                return 4;
+                return 7;
             }
         };
     }
@@ -163,32 +163,41 @@ public class WineBarrelBlockEntity extends BlockEntity implements MenuProvider {
         if (level.isClientSide()) {
             return;
         }
-
-        if (pEntity.water >= pEntity.waterCapability) {return;}
-
-        if (pEntity.itemHandler.getStackInSlot(9).is(Items.WATER_BUCKET)) {
-            pEntity.water = Math.min(pEntity.water + 3, pEntity.waterCapability);
-            pEntity.itemHandler.extractItem(9, 1, false); // 把水桶干掉
-            pEntity.itemHandler.setStackInSlot(9, new ItemStack(Items.BUCKET)); // 把空弄出来
-        } else if(pEntity.itemHandler.getStackInSlot(9).is(Items.POTION)) {
-            pEntity.water += 1;
-            pEntity.itemHandler.extractItem(9,1, false);
-            pEntity.itemHandler.setStackInSlot(9, new ItemStack(Items.GLASS_BOTTLE));
-        }
-
-        if(hasRecipe(pEntity)) {
-            pEntity.progress++;
-            setChanged(level, pos, state);
-
-            if(pEntity.progress >= pEntity.maxProgress) {
-                brewIncrease(pEntity);
-                if(pEntity.wineMaking>=pEntity.wineFinish) {
+        if (pEntity.water < pEntity.waterCapability&&pEntity.flag==0) {//水未满
+            if (pEntity.itemHandler.getStackInSlot(9).is(Items.WATER_BUCKET)) {
+                pEntity.water = Math.min(pEntity.water + 3, pEntity.waterCapability);
+                pEntity.itemHandler.extractItem(9, 1, false); // 把水桶干掉
+                pEntity.itemHandler.setStackInSlot(9, new ItemStack(Items.BUCKET)); // 把空弄出来
+            } else if (pEntity.itemHandler.getStackInSlot(9).is(Items.POTION)) {
+                pEntity.water += 1;
+                pEntity.itemHandler.extractItem(9, 1, false);
+                pEntity.itemHandler.setStackInSlot(9, new ItemStack(Items.GLASS_BOTTLE));
+            }
+        }else if(pEntity.wineMaking < pEntity.wineFinish&&pEntity.flag==0){//水已满,而酿造进度未满
+            if(hasRecipe(pEntity)) {
+                pEntity.progress++;
+                if(pEntity.progress >= pEntity.maxProgress) {
+                    brewIncrease(pEntity);
                     craftItem(pEntity);
                 }
+                setChanged(level, pos, state);
+            } else {
+                pEntity.resetProgress();
+                setChanged(level, pos, state);
             }
-        } else {
-            pEntity.resetProgress();
-            setChanged(level, pos, state);
+        }else{//酿造进度已满，可以接酒
+            if(pEntity.wineMaking==0){
+                pEntity.flag=0;
+                return;
+            }
+            pEntity.flag=1;
+            if(pEntity.itemHandler.getStackInSlot(10).is(ModItems.BEER_MUG.get())&&pEntity.wineMaking>0){
+                pEntity.itemHandler.extractItem(10, 1, false);
+                pEntity.itemHandler.setStackInSlot(11, new ItemStack(ModItems.FULL_BEER_MUG.get(),
+                        pEntity.itemHandler.getStackInSlot(11).getCount() +1));
+                pEntity.water--;
+                pEntity.wineMaking--;
+            }
         }
     }
     /**
@@ -216,43 +225,43 @@ public class WineBarrelBlockEntity extends BlockEntity implements MenuProvider {
      * @param pEntity 就是酒桶本身
      */
     private static void craftItem(WineBarrelBlockEntity pEntity) {
-        if(hasRecipe(pEntity)) {
             if(pEntity.identicalWine==1){
-                    int wheatToConsume = 4;
-                    // 消耗1个糖
-                    int sugarToConsume = 1;
+                int wheatToConsume = 1;
+                int wheatSeedsToConsume = 1;
+                int sugarToConsume = 1;
 
-                    // 从0-8号槽位中消耗小麦
-                    for (int i = 0; i < 9 && wheatToConsume > 0; i++) {
-                        ItemStack stack = pEntity.itemHandler.getStackInSlot(i);
-                        if (!stack.isEmpty() && stack.is(Items.WHEAT)) {
-                            // int toExtract = Math.min(stack.getCount(), wheatToConsume);
-                            pEntity.itemHandler.extractItem(i, 1, false);
-                            wheatToConsume -= 1;
-                        }
+                // 从0-8号槽位中消耗小麦
+                for (int i = 0; i < 9 && wheatToConsume > 0; i++) {
+                    ItemStack stack = pEntity.itemHandler.getStackInSlot(i);
+                    if (!stack.isEmpty() && stack.is(Items.WHEAT)) {
+                        // int toExtract = Math.min(stack.getCount(), wheatToConsume);
+                        pEntity.itemHandler.extractItem(i, 1, false);
+                        wheatToConsume -= 1;
                     }
+                }
 
-                    // 从0-8号槽位中消耗糖
-                    for (int i = 0; i < 9 && sugarToConsume > 0; i++) {
-                        ItemStack stack = pEntity.itemHandler.getStackInSlot(i);
-                        if (!stack.isEmpty() && stack.is(Items.SUGAR)) {
-                            // int toExtract = Math.min(stack.getCount(), sugarToConsume);
-                            pEntity.itemHandler.extractItem(i, 1, false);
-                            sugarToConsume -= 1;
-                        }
+                // 从0-8号槽位中消耗小麦种子
+                for (int i = 0; i < 9 && wheatSeedsToConsume > 0; i++) {
+                    ItemStack stack = pEntity.itemHandler.getStackInSlot(i);
+                    if (!stack.isEmpty() && stack.is(Items.WHEAT_SEEDS)) {
+                        pEntity.itemHandler.extractItem(i, 1, false);
+                        wheatSeedsToConsume -= 1;
                     }
-//                  pEntity.water -= ; //消耗水
-                    pEntity.itemHandler.extractItem(10, 1, false);
+                }
 
-                    // 在槽位10放置啤酒产出
-                    pEntity.itemHandler.setStackInSlot(11, new ItemStack(ModItems.FULL_BEER_MUG.get(),
-                            pEntity.itemHandler.getStackInSlot(11).getCount() +1));
+                // 从0-8号槽位中消耗糖
+                for (int i = 0; i < 9 && sugarToConsume > 0; i++) {
+                    ItemStack stack = pEntity.itemHandler.getStackInSlot(i);
+                    if (!stack.isEmpty() && stack.is(Items.SUGAR)) {
+                        // int toExtract = Math.min(stack.getCount(), sugarToConsume);
+                        pEntity.itemHandler.extractItem(i, 1, false);
+                        sugarToConsume -= 1;
+                    }
+                }
 
-                    pEntity.resetProgress();
+                pEntity.resetProgress();
 
             }
-            // 消耗4个小麦
-        }
     }
     //各类配方通过实现这个方法来做
     private static boolean hasRecipe(WineBarrelBlockEntity entity) {
@@ -289,8 +298,9 @@ public class WineBarrelBlockEntity extends BlockEntity implements MenuProvider {
             boolean hasEnoughSlots; // 确保有且只有这些材料
             boolean hasEnoughWater;// 确保水足够
             int countOfRecipes = 2;//配方数,根据实际数量修改
+            int k;
 
-            for(int k=1;k<=countOfRecipes;k++){
+            for(k=1;k<=countOfRecipes;k++){
                 if(k==1){
                     //配方一
                     // 判断条件：至少有1个小麦、1个糖，1个种子
@@ -298,7 +308,9 @@ public class WineBarrelBlockEntity extends BlockEntity implements MenuProvider {
                     hasEnoughSlots = filledSlots == 3;
                     hasEnoughWater = entity.water >= entity.waterCapability;
                     if(hasRequiredIngredients && hasEnoughSlots && hasEnoughWater){
-                        entity.identicalWine = 1;
+                        if(entity.identicalWine != 0&&entity.identicalWine != k) return false;
+                        entity.identicalWine = k;
+                        break;
                     }
                 }else if(k==2){
                     //配方二
@@ -306,14 +318,15 @@ public class WineBarrelBlockEntity extends BlockEntity implements MenuProvider {
                     hasRequiredIngredients = wheatCount >= 1 && sugarCount >= 1 && wheatSeedsCount >= 1;
                     hasEnoughSlots = filledSlots == 3;
                     hasEnoughWater = entity.water >= entity.waterCapability;
-                    if(hasRequiredIngredients && hasEnoughSlots && hasEnoughWater) {
+                    if(false) {
                         // 如果满足多个配方，则返回false
-                        if(entity.identicalWine != 0)return false;
-                        entity.identicalWine = 2;
+                        if(entity.identicalWine != 0&&entity.identicalWine != k)return false;
+                        entity.identicalWine = k;
+                        break;
                     }
                 }
             }
-            // 满足只有一个配方时，返回true
+            if(k>countOfRecipes)return false;
             return true;
         }
         // 如果不满足总条件，则返回false
