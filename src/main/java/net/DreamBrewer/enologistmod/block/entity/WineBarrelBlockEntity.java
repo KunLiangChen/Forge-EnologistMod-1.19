@@ -125,7 +125,9 @@ public class WineBarrelBlockEntity extends BlockEntity implements MenuProvider {
     protected void saveAdditional(CompoundTag nbt) {
         nbt.put("inventory", itemHandler.serializeNBT());
 //        nbt.putInt("gem_infusing_station.progress", this.progress); TODO: figure out what it is
-
+        nbt.putInt("wine_barrel.progress",this.progress);
+        nbt.putInt("wine_barrel.water_contain",this.water);
+        nbt.putInt("wine_barrel.brew_progress",this.wineMaking);
         super.saveAdditional(nbt);
     }
 
@@ -133,6 +135,9 @@ public class WineBarrelBlockEntity extends BlockEntity implements MenuProvider {
     public void load(CompoundTag nbt) {
         super.load(nbt);
         itemHandler.deserializeNBT(nbt.getCompound("inventory"));
+        progress = nbt.getInt("wine_barrel.progress");
+        water = nbt.getInt("wine_barrel.water_contain");
+        wineMaking = nbt.getInt("wine_barrel.brew_progress");
 //        progress = nbt.getInt("gem_infusing_station.progress"); TODO: figure out what it is
     }
 
