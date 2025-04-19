@@ -128,6 +128,7 @@ public class WineBarrelBlockEntity extends BlockEntity implements MenuProvider {
         nbt.putInt("wine_barrel.progress",this.progress);
         nbt.putInt("wine_barrel.water_contain",this.water);
         nbt.putInt("wine_barrel.brew_progress",this.wineMaking);
+        nbt.putInt("wine_barrel.identical_wine",this.identicalWine);
         super.saveAdditional(nbt);
     }
 
@@ -138,6 +139,7 @@ public class WineBarrelBlockEntity extends BlockEntity implements MenuProvider {
         progress = nbt.getInt("wine_barrel.progress");
         water = nbt.getInt("wine_barrel.water_contain");
         wineMaking = nbt.getInt("wine_barrel.brew_progress");
+        identicalWine = nbt.getInt("wine_barrel.identical_wine");
 //        progress = nbt.getInt("gem_infusing_station.progress"); TODO: figure out what it is
     }
 
