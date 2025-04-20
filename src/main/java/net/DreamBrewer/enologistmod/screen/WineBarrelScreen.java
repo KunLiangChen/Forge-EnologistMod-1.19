@@ -90,13 +90,72 @@ public class WineBarrelScreen extends AbstractContainerScreen<WineBarrelMenu> {
                             pPoseStack,
                             x + 108,
                             y + 9 + (maxWineHeight - wineHeight), // 调整Y坐标起始位置
-                            200,
+                            214,
                             16 + (maxWineHeight - wineHeight), // 调整纹理Y坐标
                             19,
                             wineHeight
                     );
                     break;
-                    // 可以根据需要添加更多的酿造类型
+                case 3:
+                    // 渲染配方3的酿造进度条
+                    blit(
+                            pPoseStack,
+                            x + 108,
+                            y + 9 + (maxWineHeight - wineHeight), // 调整Y坐标起始位置
+                            233,
+                            16 + (maxWineHeight - wineHeight), // 调整纹理Y坐标
+                            19,
+                            wineHeight
+                    );
+                    break;
+                case 4:
+                    // 渲染配方4的酿造进度条
+                    blit(
+                            pPoseStack,
+                            x + 108,
+                            y + 9 + (maxWineHeight - wineHeight), // 调整Y坐标起始位置
+                            176,
+                            82 + (maxWineHeight - wineHeight), // 调整纹理Y坐标
+                            19,
+                            wineHeight
+                    );
+                    break;
+                case 5:
+                    // 渲染配方5的酿造进度条
+                    blit(
+                            pPoseStack,
+                            x + 108,
+                            y + 9 + (maxWineHeight - wineHeight), // 调整Y坐标起始位置
+                            214,
+                            82 + (maxWineHeight - wineHeight), // 调整纹理Y坐标
+                            19,
+                            wineHeight
+                    );
+                    break;
+                case 6:
+                    // 渲染配方6的酿造进度条
+                    blit(
+                            pPoseStack,
+                            x + 108,
+                            y + 9 + (maxWineHeight - wineHeight), // 调整Y坐标起始位置
+                            233,
+                            82 + (maxWineHeight - wineHeight), // 调整纹理Y坐标
+                            19,
+                            wineHeight
+                    );
+                    break;
+                case 7:
+                    // 渲染配方7的酿造进度条
+                    blit(
+                            pPoseStack,
+                            x + 108,
+                            y + 9 + (maxWineHeight - wineHeight), // 调整Y坐标起始位置
+                            195,
+                            148 + (maxWineHeight - wineHeight), // 调整纹理Y坐标
+                            19,
+                            wineHeight
+                    );
+                    break;
                 default:
                     break;
             }
