@@ -13,6 +13,7 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
@@ -23,8 +24,12 @@ import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
+import net.minecraftforge.registries.RegistryObject;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
+
 /* 代码组注意！：以后实现实体的时候注意对于通用方法全部用static实现，需要调用方块本身就传参 */
 //代码组注意：实现这种实体时注意itemHandler，tick，hasRecipe，craftItem这几个方法是主要修改点
 //其他方法大不相同，策划组没发疯就不用去想着改。
@@ -51,6 +56,9 @@ public class WineBarrelBlockEntity extends BlockEntity implements MenuProvider {
     private int wineFinish = 16;
     private int identicalWine = 0;
     private int isMakingFinish =0;//标志酒是否酿好
+    private static List<Item> identicalWineList = List.of(ModItems.BEERITEM.get(),ModItems.APPLE_WINE_ITEM.get()
+            ,ModItems.CRUDEVODKA.get(),ModItems.CRUDERUM.get(),ModItems.SWEETBERRYWINE.get()
+            ,ModItems.GLOWBERRYWINE.get(),ModItems.HEAVENLYDELIRIUM.get(),ModItems.ENDECHOWINE.get(),ModItems.MUSHROOMWINE.get());
     public WineBarrelBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.WINE_BARREL.get(), pos, state);
         this.data = new ContainerData() {
@@ -196,10 +204,10 @@ public class WineBarrelBlockEntity extends BlockEntity implements MenuProvider {
                 return;
             }
             pEntity.isMakingFinish =1;
-            if(pEntity.itemHandler.getStackInSlot(10).is(ModItems.BEER_MUG.get())&&pEntity.wineMaking>0){
+            if(pEntity.itemHandler.getStackInSlot(10).is(Items.GLASS_BOTTLE)&&pEntity.wineMaking>0){
                 pEntity.itemHandler.extractItem(10, 1, false);
-                pEntity.itemHandler.setStackInSlot(11, new ItemStack(ModItems.FULL_BEER_MUG.get(),
-                        pEntity.itemHandler.getStackInSlot(11).getCount() +1));
+                pEntity.itemHandler.setStackInSlot(11, new ItemStack(identicalWineList.get(pEntity.identicalWine),
+                        pEntity.itemHandler.getStackInSlot(11).getCount()+1));
                 pEntity.water--;
                 pEntity.wineMaking--;
             }
@@ -302,7 +310,7 @@ public class WineBarrelBlockEntity extends BlockEntity implements MenuProvider {
 
         //总条件
         if( entity.water >= entity.waterCapability && canInsertAmountIntoOutputSlot(inventory) &&
-                canInsertItemIntoOutputSlot(inventory, new ItemStack(ModItems.BEER_MUG.get(), 1))) {
+                canInsertItemIntoOutputSlot(inventory, new ItemStack(Items.GLASS_BOTTLE, 1))) {
             // 检查0-8插槽中物品的数量
             int wheatCount = 0;  // 小麦计数
             int sugarCount = 0;  // 糖计数
@@ -347,10 +355,9 @@ public class WineBarrelBlockEntity extends BlockEntity implements MenuProvider {
                     }
                 }
             }
-            System.out.println(entity.itemHandler.getStackInSlot(2).getCount());
-            boolean hasRequiredIngredients;// 确保材料数量
+            boolean hasRequiredIngredients; // 确保材料数量
             boolean hasEnoughSlots; // 确保有且只有这些材料
-            int countOfRecipes = 7;//配方数,根据实际数量修改
+            int countOfRecipes = 7; // 配方数,根据实际数量修改
             int k;
 
             for(k=1;k<=countOfRecipes;k++){
