@@ -1,11 +1,14 @@
 package net.DreamBrewer.enologistmod.item;
 
 import net.DreamBrewer.enologistmod.EnologistMod;
+import net.DreamBrewer.enologistmod.item.custom.AppleWineItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+import net.DreamBrewer.enologistmod.item.custom.BeerItem;
+
 public class ModItems {
     public static final DeferredRegister<Item> ITEMS =
             DeferredRegister.create(ForgeRegistries.ITEMS, EnologistMod.MOD_ID);
@@ -21,7 +24,11 @@ public class ModItems {
 
     //装满的啤酒杯，made by @Echo
     public static final RegistryObject<Item> FULL_BEER_MUG = ITEMS.register("full_beer_mug",
-            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.WINE_TAB)));//暂时放在工具栏
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.WINE_TAB)));
+    public static final RegistryObject<Item> BEERITEM = ITEMS.register("beer_item",
+        () -> new BeerItem(new Item.Properties().tab(ModCreativeModeTab.WINE_TAB)));
+    public static final RegistryObject<Item> APPLE_WINE_ITEM = ITEMS.register("apple_wine_item",
+            () -> new AppleWineItem(new Item.Properties().tab(ModCreativeModeTab.WINE_TAB)));
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }
