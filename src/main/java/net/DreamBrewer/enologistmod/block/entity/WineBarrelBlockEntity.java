@@ -206,7 +206,7 @@ public class WineBarrelBlockEntity extends BlockEntity implements MenuProvider {
             pEntity.isMakingFinish =1;
             if(pEntity.itemHandler.getStackInSlot(10).is(Items.GLASS_BOTTLE)&&pEntity.wineMaking>0){
                 pEntity.itemHandler.extractItem(10, 1, false);
-                pEntity.itemHandler.setStackInSlot(11, new ItemStack(identicalWineList.get(pEntity.identicalWine),
+                pEntity.itemHandler.setStackInSlot(11, new ItemStack(identicalWineList.get(pEntity.identicalWine-1),
                         pEntity.itemHandler.getStackInSlot(11).getCount()+1));
                 pEntity.water--;
                 pEntity.wineMaking--;
@@ -292,6 +292,12 @@ public class WineBarrelBlockEntity extends BlockEntity implements MenuProvider {
                 consumeItems(pEntity, new ItemStack(Items.CACTUS), 2);
                 consumeItems(pEntity, new ItemStack(Items.GOLD_NUGGET), 1);
                 break;
+            case 8:
+                // 配方八：一个紫颂果、一个爆裂紫颂果、一个糖
+                consumeItems(pEntity, new ItemStack(Items.CHORUS_FRUIT), 1);
+                consumeItems(pEntity, new ItemStack(Items.POPPED_CHORUS_FRUIT), 1);
+                consumeItems(pEntity, new ItemStack(Items.SUGAR), 1);
+                break;
             default:
                 return;
         }
@@ -323,6 +329,8 @@ public class WineBarrelBlockEntity extends BlockEntity implements MenuProvider {
             int glowBerriesCount = 0; // 发光浆果数量
             int cactusCount = 0; // 仙人掌数量
             int goldNuggetCount = 0; // 金粒数量
+            int chorusFruitCount = 0; // 紫颂果数量
+            int PoppedChorusFruitCount = 0; // 爆裂紫颂果数量
             int filledSlots = 0; // 已填充的格子数量
 
             // 遍历0-8号槽位
@@ -352,12 +360,16 @@ public class WineBarrelBlockEntity extends BlockEntity implements MenuProvider {
                         cactusCount += stack.getCount(); // 累计仙人掌数量
                     } else if (stack.is(Items.GOLD_NUGGET)) {
                         goldNuggetCount += stack.getCount(); // 累计金粒数量
+                    } else if (stack.is(Items.CHORUS_FRUIT)){
+                        chorusFruitCount += stack.getCount(); // 累计紫颂果数量
+                    } else if (stack.is(Items.POPPED_CHORUS_FRUIT)){
+                        PoppedChorusFruitCount += stack.getCount(); // 累计爆裂紫颂果数量
                     }
                 }
             }
-            boolean hasRequiredIngredients; // 确保材料数量
-            boolean hasEnoughSlots; // 确保有且只有这些材料
-            int countOfRecipes = 7; // 配方数,根据实际数量修改
+            boolean hasRequiredIngredients = false; // 确保材料数量
+            boolean hasEnoughSlots = false; // 确保有且只有这些材料
+            int countOfRecipes = 8; // 配方数,根据实际数量修改
             int k;
 
             for(k=1;k<=countOfRecipes;k++){
@@ -366,77 +378,47 @@ public class WineBarrelBlockEntity extends BlockEntity implements MenuProvider {
                     // 判断条件：1个小麦、1个糖，1个种子
                     hasRequiredIngredients = (wheatCount >= 1 && sugarCount >= 1 && wheatSeedsCount >= 1);
                     hasEnoughSlots = (filledSlots == 3);
-                    if(hasRequiredIngredients && hasEnoughSlots){
-                        if(entity.identicalWine != 0&&entity.identicalWine != k) return false;
-                        entity.identicalWine = k;
-                        break;
-                    }
                 }else if(k==2){
                     //配方二：粗制苹果果酒
                     // 判断条件：一个苹果、一个糖
                     hasRequiredIngredients = (appleCount >= 1 && sugarCount >= 1);
                     hasEnoughSlots = (filledSlots == 2);
-                    if(hasRequiredIngredients && hasEnoughSlots) {
-                        // 如果满足多个配方，则返回false
-                        if(entity.identicalWine != 0&&entity.identicalWine != k)return false;
-                        entity.identicalWine = k;
-                        break;
-                    }
                 }else if(k==3){
                     //配方三：粗制伏特加
                     // 判断条件：一个马铃薯
                     hasRequiredIngredients = (potatoCount >= 1);
                     hasEnoughSlots = (filledSlots == 1);
-                    if(hasRequiredIngredients && hasEnoughSlots) {
-                        // 如果满足多个配方，则返回false
-                        if(entity.identicalWine != 0&&entity.identicalWine != k)return false;
-                        entity.identicalWine = k;
-                        break;
-                    }
                 }else if(k==4){
                     //配方四：粗制朗姆酒
                     // 判断条件：一个甘蔗或一个甜菜根
                     hasRequiredIngredients = (sugarCaneCount >= 1 || beetrootCount >= 1);
                     hasEnoughSlots = (filledSlots == 1);
-                    if(hasRequiredIngredients && hasEnoughSlots) {
-                        // 如果满足多个配方，则返回false
-                        if(entity.identicalWine != 0&&entity.identicalWine != k)return false;
-                        entity.identicalWine = k;
-                        break;
-                    }
                 }else if(k==5){
-                    //配方五：粗制越橘果酒
+                    //配方五：越橘果酒
                     // 判断条件：一个甜浆果和一个糖
                     hasRequiredIngredients = (sweetBerriesCount >= 1 && sugarCount >= 1);
                     hasEnoughSlots = (filledSlots == 2);
-                    if(hasRequiredIngredients && hasEnoughSlots) {
-                        // 如果满足多个配方，则返回false
-                        if(entity.identicalWine != 0&&entity.identicalWine != k)return false;
-                        entity.identicalWine = k;
-                        break;
-                    }
                 } else if(k==6){
-                    //配方六：粗制发光浆果酒
+                    //配方六：发光浆果酒
                     // 判断条件：一个发光浆果和一个糖
                     hasRequiredIngredients = (glowBerriesCount >= 1 && sugarCount >= 1);
                     hasEnoughSlots = (filledSlots == 2);
-                    if(hasRequiredIngredients && hasEnoughSlots) {
-                        // 如果满足多个配方，则返回false
-                        if(entity.identicalWine != 0&&entity.identicalWine != k)return false;
-                        entity.identicalWine = k;
-                        break;
-                    }
                 } else if(k==7){
-                    //配方七：粗制仙人醉
+                    //配方七：仙人醉
                     // 判断条件：两个仙人掌和一个金粒
                     hasRequiredIngredients = (cactusCount >= 2 && goldNuggetCount >= 1);
                     hasEnoughSlots = (filledSlots == 2);
-                    if(hasRequiredIngredients && hasEnoughSlots) {
-                        // 如果满足多个配方，则返回false
-                        if(entity.identicalWine != 0&&entity.identicalWine != k)return false;
-                        entity.identicalWine = k;
-                        break;
-                    }
+                } else if(k==8){
+                    //配方八：末地回响
+                    // 判断条件：一个紫颂果、一个爆裂紫颂果和一个糖
+                    hasRequiredIngredients = (chorusFruitCount >= 1 && PoppedChorusFruitCount >= 1 && sugarCount >= 1);
+                    hasEnoughSlots = (filledSlots == 3);
+                }
+                if(hasRequiredIngredients && hasEnoughSlots) {
+                    // 如果满足多个配方，则返回false
+                    if(entity.identicalWine != 0&&entity.identicalWine != k)return false;
+                    entity.identicalWine = k;
+                    break;
                 }
             }
             if(k>countOfRecipes)return false;//没有满足的配方,返回false

@@ -69,7 +69,6 @@ public class WineBarrelScreen extends AbstractContainerScreen<WineBarrelMenu> {
         }
         if(menu.isBrewing())
         {
-            //TODO:调整渲染
             int wineType = menu.getWineType();
             switch (wineType) {
                 case 1:
@@ -151,6 +150,30 @@ public class WineBarrelScreen extends AbstractContainerScreen<WineBarrelMenu> {
                             x + 108,
                             y + 9 + (maxWineHeight - wineHeight), // 调整Y坐标起始位置
                             195,
+                            148 + (maxWineHeight - wineHeight), // 调整纹理Y坐标
+                            19,
+                            wineHeight
+                    );
+                    break;
+                case 8:
+                    // 渲染配方8的酿造进度条
+                    blit(
+                            pPoseStack,
+                            x + 108,
+                            y + 9 + (maxWineHeight - wineHeight), // 调整Y坐标起始位置
+                            195,
+                            82 + (maxWineHeight - wineHeight), // 调整纹理Y坐标
+                            19,
+                            wineHeight
+                    );
+                    break;
+                case 9:
+                    // 渲染配方9的酿造进度条
+                    blit(
+                            pPoseStack,
+                            x + 108,
+                            y + 9 + (maxWineHeight - wineHeight), // 调整Y坐标起始位置
+                            176,
                             148 + (maxWineHeight - wineHeight), // 调整纹理Y坐标
                             19,
                             wineHeight
