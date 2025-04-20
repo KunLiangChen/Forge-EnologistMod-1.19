@@ -4,6 +4,8 @@
   "item.enologistmod.normal_gold": "浮生金",
   "item.enologistmod.beer_item": "粗制啤酒",
   "item.enologistmod.apple_wine_item": "苹果果酒",
+  "item.enologistmod.crude_vodka": "粗制伏特加",
+  "item.enologistmod.crude_rum": "粗制朗姆酒",
   "block.enologistmod.normal_gold_ore": "浮生金矿",
   "itemGroup.tool_tab": "基础工具",
   "itemGroup.mineral_tab": "矿物",

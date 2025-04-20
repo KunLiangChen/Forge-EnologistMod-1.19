@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "enologistmod:item/full_beer_mug"
+    "layer0": "enologistmod:item/crude_vodka"
   }
 }

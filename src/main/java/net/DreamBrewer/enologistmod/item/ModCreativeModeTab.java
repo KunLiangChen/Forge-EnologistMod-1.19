@@ -15,7 +15,7 @@ public class ModCreativeModeTab {
     public static final CreativeModeTab WINE_TAB = new CreativeModeTab("wine_tab") {
         @Override
         public ItemStack makeIcon() {
-            return new ItemStack(ModItems.FULL_BEER_MUG.get());
+            return new ItemStack(ModItems.BEERITEM.get());
         }
     };
 

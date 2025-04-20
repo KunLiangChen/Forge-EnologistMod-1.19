@@ -11,11 +11,11 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 
-public class AppleWineItem extends  Item {
-    public AppleWineItem(Properties properties) {
+public class EndEchoWine extends Item{
+    public EndEchoWine(Item.Properties properties) {
         super(properties.food(new FoodProperties.Builder()
-                .nutrition(4)
-                .saturationMod(3.2f)
+                .nutrition(2)
+                .saturationMod(1.6f)
                 .alwaysEat()
                 .build()));
     }
@@ -23,7 +23,8 @@ public class AppleWineItem extends  Item {
     public @NotNull ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
         ItemStack result = super.finishUsingItem(stack, level, entity);
         if (!level.isClientSide) {
-            entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 300, 0));
+            entity.addEffect(new MobEffectInstance(MobEffects.SATURATION, 1000, 0));
+            entity.addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION, 2000, 0));
         }
         // 如果是玩家且不是创造模式，给予空瓶
         if (entity instanceof Player player && !player.getAbilities().instabuild) {
