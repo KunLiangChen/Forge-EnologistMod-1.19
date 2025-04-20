@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "enologistmod:item/apple_wine_item"
+  }
+}
