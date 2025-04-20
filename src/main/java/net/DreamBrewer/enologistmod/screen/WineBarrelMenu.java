@@ -39,10 +39,13 @@ public class WineBarrelMenu extends AbstractContainerMenu {
             // 添加3×3网格的9个槽位
             for (int row = 0; row < 3; row++) {
                 for (int col = 0; col < 3; col++) {
+                    if(col + row * 3 == 2)continue;
                     this.addSlot(new SlotItemHandler(handler, col + row * 3, 
                             startX + col * 18, startY + row * 18));
                 }
             }
+            this.addSlot(new SlotItemHandler(handler, 2,
+                    startX + 2 * 18, startY));
             
             // 右侧垂直槽位（可能是过滤器或特殊材料）
             this.addSlot(new SlotItemHandler(handler, 9, 80, 10));  // 顶部槽位
