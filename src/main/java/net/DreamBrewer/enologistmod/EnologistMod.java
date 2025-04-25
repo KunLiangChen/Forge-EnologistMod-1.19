@@ -3,6 +3,7 @@ package net.DreamBrewer.enologistmod;
 import com.mojang.logging.LogUtils;
 import net.DreamBrewer.enologistmod.block.ModBlocks;
 import net.DreamBrewer.enologistmod.block.entity.ModBlockEntities;
+import net.DreamBrewer.enologistmod.effect.ModEffects;
 import net.DreamBrewer.enologistmod.item.ModItems;
 import net.DreamBrewer.enologistmod.screen.ModMenuTypes;
 import net.DreamBrewer.enologistmod.screen.WineBarrelScreen;
@@ -26,7 +27,7 @@ public class EnologistMod {
 
     public EnologistMod() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
-
+        ModEffects.register(modEventBus);
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
         modEventBus.addListener(this::commonSetup);

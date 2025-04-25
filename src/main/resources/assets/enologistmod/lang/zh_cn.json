@@ -12,6 +12,7 @@
   "item.enologistmod.end_echo_wine": "末地回响",
   "item.enologistmod.mushroom_wine": "蘑菇酒",
   "block.enologistmod.normal_gold_ore": "浮生金矿",
+  "effect.enologistmod.wither_immune": "凋零免疫",
   "itemGroup.tool_tab": "基础工具",
   "itemGroup.mineral_tab": "矿物",
   "itemGroup.wine_tab": "酒类",
