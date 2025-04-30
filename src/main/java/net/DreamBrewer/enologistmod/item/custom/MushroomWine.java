@@ -10,6 +10,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class MushroomWine extends Item{
     public MushroomWine(Item.Properties properties) {
@@ -23,8 +25,15 @@ public class MushroomWine extends Item{
     public @NotNull ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
         ItemStack result = super.finishUsingItem(stack, level, entity);
         if (!level.isClientSide) {
-            entity.addEffect(new MobEffectInstance(MobEffects.DIG_SPEED, 1200, 0));//急迫
-            //TODO:清除负面效果
+            entity.addEffect(new MobEffectInstance(MobEffects.DIG_SPEED, 1200, 0)); // 急迫
+
+            // 收集所有有害效果
+            List<MobEffectInstance> harmfulEffects = entity.getActiveEffects().stream()
+                  .filter(effectInstance -> effectInstance.getEffect().getCategory() == net.minecraft.world.effect.MobEffectCategory.HARMFUL)
+                  .collect(Collectors.toList());
+
+            // 统一移除有害效果
+            harmfulEffects.forEach(effectInstance -> entity.removeEffect(effectInstance.getEffect()));
         }
         // 如果是玩家且不是创造模式，给予空瓶
         if (entity instanceof Player player && !player.getAbilities().instabuild) {

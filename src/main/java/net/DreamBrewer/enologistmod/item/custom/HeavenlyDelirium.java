@@ -1,5 +1,6 @@
 package net.DreamBrewer.enologistmod.item.custom;
 
+import net.DreamBrewer.enologistmod.effect.ModEffects;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
@@ -24,7 +25,8 @@ public class HeavenlyDelirium extends Item{
         ItemStack result = super.finishUsingItem(stack, level, entity);
         if (!level.isClientSide) {
             entity.addEffect(new MobEffectInstance(MobEffects.HEAL, 1, 1));
-            entity.addEffect(new MobEffectInstance(MobEffects.GLOWING, 1800, 0));//TODO:增加凋零免疫
+            entity.addEffect(new MobEffectInstance(MobEffects.GLOWING, 1800, 0));
+            entity.addEffect(new MobEffectInstance(ModEffects.WITHER_IMMUNE.get(),1800,0));
         }
         // 如果是玩家且不是创造模式，给予空瓶
         if (entity instanceof Player player && !player.getAbilities().instabuild) {
