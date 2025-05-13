@@ -1,5 +1,7 @@
 {
-  "name": "基础酿酒指导",
-  "landing_text": "只适用于测试",
-  "version": 1
+  "name": "酿梦研究日志",
+  "landing_text": "当你看到此书之时，我已去追寻祂，希望这些谒见祂的方法能对你有用……",
+  "version": 1,
+  "creative_tab": "enologistmod:itemGroup:tool_tab",
+  "use_resource_pack": true
 }
