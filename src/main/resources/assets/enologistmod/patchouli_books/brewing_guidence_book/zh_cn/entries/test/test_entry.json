@@ -1,11 +1,12 @@
 {
-  "name": "Test Entry",
+  "name": "V1.0",
   "icon": "minecraft:writable_book",
-  "category": "enologistmod:test_category",
+  "category": "enologistmod:version",
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "测试!"
+      "text": "·添加了初级酒的制作工具：酒桶$(br)·新增了9种初级酒的制作$(br)·新增了一种状态：凋零免疫$(br)"
+
     }
   ]
 }
