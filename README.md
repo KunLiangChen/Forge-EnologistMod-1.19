@@ -87,4 +87,4 @@ DreamBrewer
 
 ---
 
-> 注：开发人员请见 [开发文档](./doc/dev_doc.md.md)
+> 注：开发人员请见 [开发文档](./doc/dev_doc.md)
