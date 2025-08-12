@@ -63,10 +63,6 @@ doc/
 3. 根据自身组别进入对应分支，这里以**美工组**为例:
 ```
 (User) git checkout ArtGroup
-<<<<<<< Updated upstream
-
-```
-=======
     Switched to branch 'ArtGroup'
     Your branch is up to date with 'origin/ArtGroup'.
 ```
@@ -86,5 +82,4 @@ git add "对应的文件"
 git commit -m "对本次上传的说明，建议符合Google规范"
 git push origin 指定分支(如ArtGroup)
 ``` 
-> 上传仓库后，请各单位务必上 GitHub 链接查验上传结果，点击 `Switch branches/tags` 即可查看对应分支上传情况；核验无误后，统一汇报上传情况
->>>>>>> Stashed changes
+> 注：上传仓库后，请各单位务必上 GitHub 链接查验上传结果，点击 `Switch branches/tags` 即可查看对应分支上传情况；核验无误后，统一汇报上传情况
