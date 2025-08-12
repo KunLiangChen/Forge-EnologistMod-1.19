@@ -1,10 +1,16 @@
-# 🍷 醉生梦死 - 一个关于酒灵传说的 Minecraft 1.19 模组
+<div align="center">
+    <h1> 🍷 醉生梦死 
+    <h2> 一个关于酒灵传说的 Minecraft 1.19 模组
+</div>
 
-> **⚠️ 警示**  
+---
+
+> **⚠️ 警告:**  
 > 本模组涉及酒精主题，但制作组郑重呼吁：
 > - 未成年人禁止饮酒！
 > - 成年人请勿过量饮酒！
-    > *——在游戏中体验奇幻，在现实中保持清醒。*
+>
+> —— *在游戏中体验奇幻，在现实中保持清醒*
 
 ---
 
@@ -26,12 +32,15 @@
 
 ## 🎮 核心玩法
 ### 1️⃣ 酿造系统
+
 ---
 
 ### 2️⃣ 酒灵类型（部分）
+
 ---
 
 ### 3️⃣ 进度挑战
+
 ---
 
 ## ⬇️ 安装指南
@@ -39,26 +48,31 @@
 **安装步骤**:
 1. 下载模组包文件 - [CurseForge](https://www.bilibili.com/video/BV1GJ411x7h7?spm_id_from=333.788.recommend_more_video.0&vd_source=00ec4b59ea5b839fc1bd6fe8128d578d)（还没上传，敬请期待）。
 2. 分配至少 **4GB 内存**。
+
 ---
 
 ## ❓ 常见问题
+
 ---
 
 ## 🖼️ 媒体展示
+
 ---
 
 ## 💬 社区
 - B站官方：运营@KagamineRia[酿梦者_Official](https://b23.tv/ZX27e1a)
 - 反馈提交：[GitHub Issues](https://github.com/KunLiangChen/Forge-EnologistMod-1.19/issues)
+
 ---
 
 ## 🐹 团队
 DreamBrewer
 - 项目策划： `@Athering`
 - 运营： `@KagamineRia`
-- 程序组： `@Athering` `@yilin` `@Echo` `@Ramesses N` `@ZhoukerKing`
-- 美工组： `@Ryankreys` `@KagamineRia` `@Arvin`
+- 程序组： `@Athering` `@yilin` `@Echo`  `@ZhoukerKing`
+- 美工组： `@Ryankreys` `@KagamineRia` `@Arvin` `@Ramesses N`
 - 机制/剧情组： `@Adamn` `@KagamineRia` `@QingXuan`
+
 ---
 
 ## TODO 待做事项
@@ -70,3 +84,7 @@ DreamBrewer
 6. [x] ~~跟策划爆了！~~
 7. [ ] 喝酒导致`饱食度`卡死问题需要解决
 8. [ ] 软编码`酒桶`的合成表注册。
+
+---
+
+> 注：开发人员请见 [开发文档](./doc/dev_doc.md.md)
