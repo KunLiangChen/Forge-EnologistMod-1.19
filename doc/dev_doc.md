@@ -63,5 +63,28 @@ doc/
 3. 根据自身组别进入对应分支，这里以**美工组**为例:
 ```
 (User) git checkout ArtGroup
+<<<<<<< Updated upstream
 
 ```
+=======
+    Switched to branch 'ArtGroup'
+    Your branch is up to date with 'origin/ArtGroup'.
+```
+4. 此时你已切入对应分支，各组 **README** 已创建，请基于此进行更新，并在自身分支内创建相应文件夹
+- 策划组建议：创建 `plan_resource` 并在其内进行细分
+- 美工组建议：创建 `art_resource` 并在其内进行细分
+- 代码组建议：创建 `code_resource` 并在其内进行细分
+> 注： **master** 主分支只用于给 User 展示并了解本游戏，各单位开发工作请在各分支内完成
+5. 上传仓库时，请注意不要讲垃圾文件，如 **mac** 的`.DS_Store`，**win** 的`Thumbs.db` 一同上传，请将垃圾文件丢入 `.gitignore` 进行过滤，具体操作如下：
+```
+# .DS_Store
+.DS_Store
+```
+6. 上传仓库正确步骤 (`GitHub Desktop` 中有对应 UI 界面方便操作)
+```
+git add "对应的文件"
+git commit -m "对本次上传的说明，建议符合Google规范"
+git push origin 指定分支(如ArtGroup)
+``` 
+> 上传仓库后，请各单位务必上 GitHub 链接查验上传结果，点击 `Switch branches/tags` 即可查看对应分支上传情况；核验无误后，统一汇报上传情况
+>>>>>>> Stashed changes
